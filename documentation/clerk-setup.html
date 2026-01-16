@@ -1,0 +1,285 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Clerk Authentication Setup – MyDzine Docs</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="./styles.css" />
+  <script defer src="./script.js"></script>
+</head>
+
+<body>
+  <aside class="sidebar">
+    <div class="brand">
+      <img src="./screenshots/logo.svg" alt="MyDzine Logo" />
+      <div>
+        <h1>MyDzine</h1>
+        <p>Documentation v2.0</p>
+      </div>
+    </div>
+    <nav>
+      <a href="./index.html">Welcome</a>
+      <a href="./how-to-use.html">User Guide</a>
+      <a href="./push-to-github.html">How to push to GitHub</a>
+      <a href="./install-vercel.html">How to install on Vercel</a>
+      <a href="./install-aws-ec2.html">How to install on AWS EC2</a>
+      <a class="active" href="./clerk-setup.html">Clerk Authentication Setup</a>
+      <a href="./mongodb-setup.html">MongoDB Database Setup</a>
+      <a href="./replicate-setup.html">Replicate API Setup</a>
+      <a href="./env-setup.html">Environment Variables</a>
+      <a href="./stripe-setup.html">Stripe Payment Setup</a>
+      <a href="./frontend-customization.html">Frontend Customization</a>
+      <a href="./pricing-credits.html">Pricing & Credits</a>
+    </nav>
+    <footer>
+      <small>Built with Next.js 14 & MongoDB</small>
+    </footer>
+  </aside>
+
+  <main class="content">
+    <header class="topbar">
+      <h2>Clerk Authentication Setup</h2>
+    </header>
+
+    <section class="prose">
+      <div class="callout info">
+        <strong>🔐 Authentication System:</strong> MyDzine uses Clerk for secure user authentication. Clerk provides
+        email/password, social logins, and complete user management out of the box.
+      </div>
+
+      <h2>Why Clerk?</h2>
+
+      <p>Clerk is a complete authentication solution that provides:</p>
+      <ul>
+        <li><strong>Multiple Sign-In Methods:</strong> Email/password, Google OAuth, and more</li>
+        <li><strong>User Management:</strong> Complete user profiles, avatars, and session management</li>
+        <li><strong>Security:</strong> Built-in security features, password hashing, and session management</li>
+        <li><strong>Easy Integration:</strong> Simple Next.js integration with <code>@clerk/nextjs</code></li>
+        <li><strong>Webhooks:</strong> Real-time user events for database synchronization</li>
+      </ul>
+
+      <h2>📝 Step-by-Step Setup</h2>
+
+      <h3>Step 1: Create Clerk Account</h3>
+      <ol class="steps">
+        <li class="step">Go to <a href="https://clerk.com" target="_blank" rel="noopener">clerk.com</a></li>
+        <li class="step">Click "Start for Free" or "Sign Up"</li>
+        <li class="step">Sign up with your email or GitHub account</li>
+        <li class="step">Verify your email address</li>
+        <li class="step">Complete the onboarding process</li>
+      </ol>
+
+      <h3>Step 2: Create a New Application</h3>
+      <ol class="steps">
+        <li class="step">After signing in, click "Create Application"</li>
+        <li class="step">Enter application name: <strong>MyDzine</strong></li>
+        <li class="step">Choose authentication options:
+          <ul>
+            <li>✅ Email address</li>
+            <li>✅ Password</li>
+            <li>✅ Google (recommended)</li>
+          </ul>
+        </li>
+        <li class="step">Click "Create Application"</li>
+      </ol>
+
+      <h3>Step 3: Configure Authentication Settings</h3>
+      <ol class="steps">
+        <li class="step">Navigate to <strong>Settings → User & Authentication</strong></li>
+        <li class="step">Configure sign-in methods:
+          <ul>
+            <li>Enable "Email address" and "Password"</li>
+            <li>Enable "Google" if you want social login</li>
+          </ul>
+        </li>
+        <li class="step">Set password requirements (recommended: at least 8 characters)</li>
+        <li class="step">Configure email verification (recommended: enable)</li>
+      </ol>
+
+      <h3>Step 4: Get API Keys</h3>
+      <ol class="steps">
+        <li class="step">Navigate to <strong>API Keys</strong> in the sidebar</li>
+        <li class="step">You'll see two keys:
+          <ul>
+            <li><strong>Publishable Key:</strong> Starts with <code>pk_test_</code> or <code>pk_live_</code></li>
+            <li><strong>Secret Key:</strong> Starts with <code>sk_test_</code> or <code>sk_live_</code></li>
+          </ul>
+        </li>
+        <li class="step">Copy both keys (you'll need them for your <code>.env.local</code> file)</li>
+      </ol>
+
+      <div class="code">
+        <pre><code># Add to .env.local
+NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=pk_test_xxxxxxxxxxxxx
+CLERK_SECRET_KEY=sk_test_xxxxxxxxxxxxx</code></pre>
+      </div>
+
+      <h3>Step 5: Configure Application URLs</h3>
+      <ol class="steps">
+        <li class="step">Navigate to <strong>Settings → Paths</strong></li>
+        <li class="step">Set up your application URLs:
+          <div class="code">
+            <pre><code># Development
+Sign-in URL: http://localhost:3000/login
+Sign-up URL: http://localhost:3000/sign-up
+After sign-in: http://localhost:3000/dashboard
+After sign-up: http://localhost:3000/dashboard
+
+# Production (after deployment)
+Sign-in URL: https://yourdomain.com/login
+Sign-up URL: https://yourdomain.com/sign-up
+After sign-in: https://yourdomain.com/dashboard
+After sign-up: https://yourdomain.com/dashboard</code></pre>
+          </div>
+        </li>
+        <li class="step">Save your changes</li>
+      </ol>
+
+      <h3>Step 6: Set Up Webhooks (Required)</h3>
+      <p>Webhooks are essential for syncing user data to your MongoDB database.</p>
+
+      <ol class="steps">
+        <li class="step">Navigate to <strong>Webhooks</strong> in the sidebar</li>
+        <li class="step">Click "Add Endpoint"</li>
+        <li class="step">Configure the webhook:
+          <ul>
+            <li><strong>Endpoint URL:</strong>
+              <div class="code">
+                <pre><code># Development (use ngrok for local testing)
+https://your-ngrok-url.ngrok.io/api/webhooks/clerk
+
+# Production
+https://yourdomain.com/api/webhooks/clerk</code></pre>
+              </div>
+            </li>
+            <li><strong>Subscriptions:</strong> Select these events:
+              <ul>
+                <li>✅ <code>user.created</code> - When a user signs up</li>
+                <li>✅ <code>user.updated</code> - When user data changes</li>
+                <li>✅ <code>user.deleted</code> - When a user is deleted</li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li class="step">Click "Create"</li>
+        <li class="step">Copy the <strong>Signing Secret</strong> (starts with <code>whsec_</code>)</li>
+        <li class="step">Add it to your <code>.env.local</code>:
+          <div class="code">
+            <pre><code>CLERK_WEBHOOK_SECRET=whsec_xxxxxxxxxxxxx</code></pre>
+          </div>
+        </li>
+      </ol>
+
+      <div class="callout warning">
+        <strong>⚠️ Webhook Testing (Local Development):</strong>
+        <ul>
+          <li>Use <a href="https://ngrok.com" target="_blank" rel="noopener">ngrok</a> to expose your local server</li>
+          <li>Run: <code>ngrok http 3000</code></li>
+          <li>Use the ngrok URL as your webhook endpoint</li>
+          <li>Update the webhook URL in Clerk dashboard</li>
+        </ul>
+      </div>
+
+      <h3>Step 7: Configure Next.js Integration</h3>
+
+      <p>MyDzine already has Clerk configured. Verify your <code>src/middleware.ts</code> file:</p>
+
+      <div class="code">
+        <pre><code>import { clerkMiddleware, createRouteMatcher } from '@clerk/nextjs/server'
+
+const isPublicRoute = createRouteMatcher([
+  '/',
+  '/login(.*)',
+  '/sign-up(.*)',
+  '/api/webhooks(.*)',
+])
+
+export default clerkMiddleware((auth, request) => {
+  if (!isPublicRoute(request)) {
+    auth().protect()
+  }
+})
+
+export const config = {
+  matcher: [
+    '/((?!_next|[^?]*\\.(?:html?|css|js(?!on)|jpe?g|webp|png|gif|svg|ttf|woff2?|ico|csv|docx?|xlsx?|zip|webmanifest)).*)',
+    '/(api|trpc)(.*)',
+  ],
+}</code></pre>
+      </div>
+
+      <h3>Step 8: Test Authentication</h3>
+      <ol class="steps">
+        <li class="step">Start your development server: <code>npm run dev</code></li>
+        <li class="step">Navigate to <code>http://localhost:3000</code></li>
+        <li class="step">Click "Sign Up" or "Get Started"</li>
+        <li class="step">Try creating an account with email/password</li>
+        <li class="step">Verify you're redirected to the dashboard</li>
+        <li class="step">Check your MongoDB database for the new user entry</li>
+      </ol>
+
+      <h2>🔑 Production Setup</h2>
+
+      <h3>Switching to Production Keys</h3>
+      <ol class="steps">
+        <li class="step">In Clerk Dashboard, toggle from "Test" to "Production" mode</li>
+        <li class="step">Get your production API keys</li>
+        <li class="step">Update environment variables on your production server:
+          <div class="code">
+            <pre><code>NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=pk_live_xxxxxxxxxxxxx
+CLERK_SECRET_KEY=sk_live_xxxxxxxxxxxxx
+CLERK_WEBHOOK_SECRET=whsec_xxxxxxxxxxxxx</code></pre>
+          </div>
+        </li>
+        <li class="step">Update webhook URL to your production domain</li>
+        <li class="step">Test authentication in production</li>
+      </ol>
+
+      <h2>🔧 Advanced Configuration</h2>
+
+      <h3>Social Logins (Google OAuth)</h3>
+      <ol class="steps">
+        <li class="step">In Clerk Dashboard, go to <strong>Settings → Social Connections</strong></li>
+        <li class="step">Click on "Google"</li>
+        <li class="step">Enable Google authentication</li>
+        <li class="step">Configure Google OAuth (see Google OAuth setup guide)</li>
+        <li class="step">Save changes</li>
+      </ol>
+
+      <h3>Custom User Metadata</h3>
+      <p>MyDzine stores additional user data in MongoDB. The webhook handler at
+        <code>src/app/api/webhooks/clerk/route.ts</code> automatically syncs user data.</p>
+
+      <h2>✅ Verification Checklist</h2>
+
+      <div class="callout">
+        <strong>Ensure you have:</strong>
+        <ul>
+          <li>✅ Clerk account created</li>
+          <li>✅ Application created in Clerk</li>
+          <li>✅ API keys added to <code>.env.local</code></li>
+          <li>✅ Webhook configured and secret added</li>
+          <li>✅ Application URLs configured</li>
+          <li>✅ Test sign-up/sign-in working</li>
+          <li>✅ User data syncing to MongoDB</li>
+        </ul>
+      </div>
+
+      <div class="callout success">
+        <strong>✅ Next Steps:</strong> After Clerk is configured:
+        <ul>
+          <li><a href="./mongodb-setup.html">Set up MongoDB Database</a></li>
+          <li><a href="./replicate-setup.html">Configure Replicate API</a></li>
+          <li><a href="./env-setup.html">Complete Environment Variables Setup</a></li>
+        </ul>
+      </div>
+    </section>
+  </main>
+</body>
+
+</html>

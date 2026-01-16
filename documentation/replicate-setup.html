@@ -1,0 +1,274 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Replicate API Setup – MyDzine Docs</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="./styles.css" />
+  <script defer src="./script.js"></script>
+</head>
+
+<body>
+  <aside class="sidebar">
+    <div class="brand">
+      <img src="./screenshots/logo.svg" alt="MyDzine Logo" />
+      <div>
+        <h1>MyDzine</h1>
+        <p>Documentation v2.0</p>
+      </div>
+    </div>
+    <nav>
+      <a href="./index.html">Welcome</a>
+      <a href="./how-to-use.html">User Guide</a>
+      <a href="./push-to-github.html">How to push to GitHub</a>
+      <a href="./install-vercel.html">How to install on Vercel</a>
+      <a href="./install-aws-ec2.html">How to install on AWS EC2</a>
+      <a href="./clerk-setup.html">Clerk Authentication Setup</a>
+      <a href="./mongodb-setup.html">MongoDB Database Setup</a>
+      <a class="active" href="./replicate-setup.html">Replicate API Setup</a>
+      <a href="./env-setup.html">Environment Variables</a>
+      <a href="./stripe-setup.html">Stripe Payment Setup</a>
+      <a href="./frontend-customization.html">Frontend Customization</a>
+      <a href="./pricing-credits.html">Pricing & Credits</a>
+    </nav>
+    <footer>
+      <small>Built with Next.js 14 & MongoDB</small>
+    </footer>
+  </aside>
+
+  <main class="content">
+    <header class="topbar">
+      <h2>Replicate API Setup</h2>
+    </header>
+
+    <section class="prose">
+      <div class="callout info">
+        <strong>🤖 AI Processing:</strong> MyDzine uses Replicate API to power all AI tools. Replicate provides access
+        to state-of-the-art AI models for image generation, editing, and transformation.
+      </div>
+
+      <h2>What is Replicate?</h2>
+
+      <p>Replicate is a platform that makes it easy to run AI models in the cloud. MyDzine uses Replicate to:</p>
+      <ul>
+        <li><strong>Generate Images:</strong> Create art, characters, and images from text prompts</li>
+        <li><strong>Transform Images:</strong> Apply filters, styles, and transformations</li>
+        <li><strong>Edit Images:</strong> Remove objects, enhance photos, expand images</li>
+        <li><strong>Generate Prompts:</strong> Create detailed prompts from reference images</li>
+      </ul>
+
+      <h2>📝 Step-by-Step Setup</h2>
+
+      <h3>Step 1: Create Replicate Account</h3>
+      <ol class="steps">
+        <li class="step">Go to <a href="https://replicate.com" target="_blank" rel="noopener">replicate.com</a></li>
+        <li class="step">Click "Sign Up" or "Get Started"</li>
+        <li class="step">Sign up with GitHub, Google, or email</li>
+        <li class="step">Verify your email address (if required)</li>
+        <li class="step">Complete the onboarding process</li>
+      </ol>
+
+      <h3>Step 2: Get Your API Token</h3>
+      <ol class="steps">
+        <li class="step">After signing in, navigate to <strong>Account Settings</strong></li>
+        <li class="step">Click on <strong>API Tokens</strong> in the sidebar</li>
+        <li class="step">You'll see your API token (starts with <code>r8_</code>)</li>
+        <li class="step">Click "Copy" to copy the token</li>
+        <li class="step">Add it to your <code>.env.local</code> file:
+          <div class="code">
+            <pre><code>REPLICATE_API_TOKEN=r8_xxxxxxxxxxxxx</code></pre>
+          </div>
+        </li>
+      </ol>
+
+      <div class="callout warning">
+        <strong>⚠️ Security Note:</strong> Never share your API token or commit it to version control. Keep it secure in
+        your <code>.env.local</code> file.
+      </div>
+
+      <h3>Step 3: Get Your Username</h3>
+      <ol class="steps">
+        <li class="step">In Replicate Dashboard, go to <strong>Account Settings</strong></li>
+        <li class="step">Your username is displayed at the top (or in your profile URL)</li>
+        <li class="step">Copy your username</li>
+        <li class="step">Add it to your <code>.env.local</code> file:
+          <div class="code">
+            <pre><code>REPLICATE_USERNAME=your-username</code></pre>
+          </div>
+        </li>
+      </ol>
+
+      <h3>Step 4: Configure Instance Token (Optional)</h3>
+      <p>If you're using custom avatar generation with instance tokens, configure this:</p>
+      <ol class="steps">
+        <li class="step">Navigate to your Replicate models or collections</li>
+        <li class="step">Find or create your instance token</li>
+        <li class="step">Add it to your <code>.env.local</code> file:
+          <div class="code">
+            <pre><code>NEXT_PUBLIC_REPLICATE_INSTANCE_TOKEN=your-instance-token</code></pre>
+          </div>
+        </li>
+      </ol>
+
+      <h2>🔧 Models Used by MyDzine</h2>
+
+      <h3>Primary Model: Stable Diffusion XL (SDXL)</h3>
+      <p>MyDzine primarily uses high-performance models like <code>stability-ai/sdxl</code> and
+        <code>black-forest-labs/flux-fill-pro</code> for most AI operations:
+      </p>
+      <ul>
+        <li><strong>Image Generation:</strong> Art generators, character creation, comic generation</li>
+        <li><strong>Image Transformation:</strong> Style transfer, filters, conversions</li>
+        <li><strong>Image Editing:</strong> Object removal, enhancement, expansion</li>
+      </ul>
+
+      <div class="code">
+        <pre><code>Model Identifier: stability-ai/sdxl
+Primary Use: High-quality AI image generation
+Format: JPG/PNG output
+Aspect Ratio: Configurable</code></pre>
+      </div>
+
+      <h3>Model Configuration</h3>
+      <p>All AI tools in MyDzine are configured with:</p>
+      <ul>
+        <li><strong>Output Format:</strong> JPG (for smaller file sizes)</li>
+        <li><strong>Aspect Ratio:</strong> 1:1 (square images)</li>
+        <li><strong>Negative Prompts:</strong> Automatically added to prevent watermarks and text</li>
+        <li><strong>Enhanced Prompts:</strong> System automatically enhances user prompts</li>
+      </ul>
+
+      <h2>💰 Pricing & Credits</h2>
+
+      <div class="callout info">
+        <strong>💳 Replicate Pricing:</strong>
+        <ul>
+          <li>Replicate charges per prediction (each AI operation)</li>
+          <li>Costs vary by model and processing time</li>
+          <li>MyDzine deducts credits from user accounts based on tool usage</li>
+          <li>Each tool typically costs 5 credits per operation</li>
+        </ul>
+      </div>
+
+      <h3>Credit Costs per Tool</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Tool Category</th>
+            <th>Credits per Operation</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>AI Art Generators</td>
+            <td>5 credits</td>
+          </tr>
+          <tr>
+            <td>AI Photo Filters</td>
+            <td>5 credits</td>
+          </tr>
+          <tr>
+            <td>AI Image Editors</td>
+            <td>5 credits</td>
+          </tr>
+          <tr>
+            <td>Image-to-Prompt</td>
+            <td>5 credits</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h2>🧪 Testing Replicate API</h2>
+
+      <h3>Test API Connection</h3>
+      <ol class="steps">
+        <li class="step">Ensure your <code>REPLICATE_API_TOKEN</code> is set in <code>.env.local</code></li>
+        <li class="step">Start your development server: <code>npm run dev</code></li>
+        <li class="step">Navigate to any AI tool page (e.g., <code>/ai-art-generator/ai-anime-generator</code>)</li>
+        <li class="step">Try generating an image</li>
+        <li class="step">Check the browser console and server logs for any errors</li>
+      </ol>
+
+      <h3>Common Issues</h3>
+
+      <h4>Issue: "Replicate API token is not configured"</h4>
+      <p><strong>Solution:</strong></p>
+      <ul>
+        <li>Verify <code>REPLICATE_API_TOKEN</code> is set in <code>.env.local</code></li>
+        <li>Restart your development server</li>
+        <li>Check that the token starts with <code>r8_</code></li>
+      </ul>
+
+      <h4>Issue: "Failed to generate image"</h4>
+      <p><strong>Solution:</strong></p>
+      <ul>
+        <li>Check your Replicate account has sufficient credits</li>
+        <li>Verify your API token is valid</li>
+        <li>Check Replicate status page for service issues</li>
+        <li>Review server logs for detailed error messages</li>
+      </ul>
+
+      <h4>Issue: "Rate limit exceeded"</h4>
+      <p><strong>Solution:</strong></p>
+      <ul>
+        <li>Upgrade your Replicate account for higher rate limits</li>
+        <li>Implement request throttling in your application</li>
+        <li>Wait before making additional requests</li>
+      </ul>
+
+      <h2>🔒 Security Best Practices</h2>
+
+      <div class="callout warning">
+        <strong>🔐 Security Recommendations:</strong>
+        <ul>
+          <li><strong>Never Expose Token:</strong> Keep your API token server-side only</li>
+          <li><strong>Use Environment Variables:</strong> Never hardcode tokens in your code</li>
+          <li><strong>Separate Test/Prod:</strong> Use different tokens for development and production</li>
+          <li><strong>Monitor Usage:</strong> Regularly check Replicate dashboard for unusual activity</li>
+          <li><strong>Set Up Webhooks:</strong> Monitor prediction status and handle errors</li>
+        </ul>
+      </div>
+
+      <h2>📊 Monitoring & Analytics</h2>
+
+      <h3>Replicate Dashboard</h3>
+      <p>Monitor your API usage in the Replicate Dashboard:</p>
+      <ul>
+        <li><strong>Predictions:</strong> View all AI operations and their status</li>
+        <li><strong>Usage:</strong> Track credits spent and API calls</li>
+        <li><strong>Billing:</strong> Monitor costs and set spending limits</li>
+        <li><strong>Models:</strong> Manage your custom models and deployments</li>
+      </ul>
+
+      <h2>✅ Verification Checklist</h2>
+
+      <div class="callout">
+        <strong>Ensure you have:</strong>
+        <ul>
+          <li>✅ Replicate account created</li>
+          <li>✅ API token copied and added to <code>.env.local</code></li>
+          <li>✅ Username added to <code>.env.local</code></li>
+          <li>✅ Instance token configured (if using avatar generation)</li>
+          <li>✅ Tested API connection with a simple generation</li>
+          <li>✅ Verified credits are being deducted correctly</li>
+        </ul>
+      </div>
+
+      <div class="callout success">
+        <strong>✅ Next Steps:</strong> After Replicate is configured:
+        <ul>
+          <li><a href="./env-setup.html">Complete Environment Variables Setup</a></li>
+          <li><a href="./how-to-use.html">Learn how to use AI tools</a></li>
+          <li><a href="./pricing-credits.html">Configure pricing and credits</a></li>
+        </ul>
+      </div>
+    </section>
+  </main>
+</body>
+
+</html>

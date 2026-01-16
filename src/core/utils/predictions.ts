@@ -1,0 +1,28 @@
+import type { IProject } from "@/types/models";
+
+export const getRefinedInstanceClass = (instanceClass: string) => {
+  return instanceClass === "man" || instanceClass === "woman"
+    ? "person"
+    : instanceClass;
+};
+
+export const extractSeedFromLogs = (logsContent: string) => {
+  try {
+    const logLines = logsContent.split("\n");
+    const seedLine = logLines[0];
+    const seedValue = seedLine.split(":")[1].trim();
+
+    return seedValue ? Number(seedValue) : undefined;
+  } catch (e) {
+    return undefined;
+  }
+};
+
+export const replacePromptToken = (prompt: string, project: IProject) => {
+  const refinedPrompt = prompt.replaceAll(
+    "@me",
+    `${project.instanceName} ${project.instanceClass}`
+  );
+
+  return refinedPrompt;
+};

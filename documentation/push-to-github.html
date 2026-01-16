@@ -1,0 +1,225 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Push to GitHub – MyDzine Docs</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="./styles.css" />
+  <script defer src="./script.js"></script>
+</head>
+
+<body>
+  <aside class="sidebar">
+    <div class="brand">
+      <img src="./screenshots/logo.svg" alt="MyDzine Logo" />
+      <div>
+        <h1>MyDzine</h1>
+        <p>Documentation v2.0</p>
+      </div>
+    </div>
+    <nav>
+      <a href="./index.html">Welcome</a>
+      <a href="./how-to-use.html">User Guide</a>
+      <a class="active" href="./push-to-github.html">How to push to GitHub</a>
+      <a href="./install-vercel.html">How to install on Vercel</a>
+      <a href="./install-aws-ec2.html">How to install on AWS EC2</a>
+      <a href="./clerk-setup.html">Clerk Authentication Setup</a>
+      <a href="./mongodb-setup.html">MongoDB Database Setup</a>
+      <a href="./replicate-setup.html">Replicate API Setup</a>
+      <a href="./env-setup.html">Environment Variables</a>
+      <a href="./stripe-setup.html">Stripe Payment Setup</a>
+      <a href="./frontend-customization.html">Frontend Customization</a>
+      <a href="./pricing-credits.html">Pricing & Credits</a>
+    </nav>
+    <footer>
+      <small>Built with Next.js 14 & MongoDB</small>
+    </footer>
+  </aside>
+
+  <main class="content">
+    <header class="topbar">
+      <h2>Push Code to GitHub</h2>
+    </header>
+
+    <section class="prose">
+      <div class="callout info">
+        <strong>📦 GitHub Setup:</strong> This guide will walk you through setting up a GitHub repository and pushing
+        your MyDzine code to GitHub. This is a prerequisite step before deploying to Vercel or AWS EC2.
+      </div>
+
+      <h2>Requirements</h2>
+      <ul>
+        <li>GitHub account (free)</li>
+        <li>Git installed on your computer</li>
+        <li>Code editor (VS Code recommended)</li>
+        <li>MyDzine source code</li>
+      </ul>
+
+      <h2>Step 1: Install Git</h2>
+      <ol class="steps">
+        <li class="step">Download Git from <a href="https://git-scm.com/downloads" target="_blank"
+            rel="noopener">git-scm.com</a></li>
+        <li class="step">Install Git following the installation wizard</li>
+        <li class="step">Configure Git (first time only):
+          <div class="code">
+            <pre><code>git config --global user.name "Your Name"
+git config --global user.email "your.email@example.com"</code></pre>
+          </div>
+        </li>
+      </ol>
+
+      <h2>Step 2: Create GitHub Repository</h2>
+      <ol class="steps">
+        <li class="step">Go to <a href="https://github.com" target="_blank" rel="noopener">github.com</a> and sign in
+        </li>
+        <li class="step">Click "+" → "New repository"</li>
+        <li class="step">Repository name: <strong>mydzine</strong> (or your preferred name)</li>
+        <li class="step">Set visibility: <strong>Private</strong> (recommended) or Public</li>
+        <li class="step">Do NOT initialize with README (we'll push existing code)</li>
+        <li class="step">Click "Create repository"</li>
+        <li class="step">Copy the repository URL (e.g., <code>https://github.com/yourusername/mydzine.git</code>)</li>
+      </ol>
+
+      <h2>Step 3: Initialize Git and Push to GitHub (Command Line)</h2>
+
+      <div class="code">
+        <pre><code># Navigate to your MyDzine project folder
+cd /path/to/photoshot-main
+
+# Initialize Git repository
+git init
+
+# Add all files
+git add .
+
+# Create initial commit
+git commit -m "Initial commit: MyDzine v2.0"
+
+# Rename branch to main (if needed)
+git branch -M main
+
+# Add remote repository
+git remote add origin https://github.com/yourusername/mydzine.git
+
+# Push to GitHub
+git push -u origin main</code></pre>
+      </div>
+
+      <div class="callout warning">
+        <strong>⚠️ Security Note:</strong> Before pushing, ensure your <code>.gitignore</code> file excludes:
+        <ul>
+          <li><code>.env.local</code> - Contains API keys and secrets</li>
+          <li><code>node_modules/</code> - Dependencies (reinstall with npm install)</li>
+          <li><code>.next/</code> - Build files (regenerated on build)</li>
+          <li><code>.DS_Store</code> - macOS system files</li>
+        </ul>
+      </div>
+
+      <h2>Step 4: Alternative - GitHub Desktop (Optional)</h2>
+      <p>For users who prefer a GUI interface:</p>
+      <ol class="steps">
+        <li class="step">Download and install <a href="https://desktop.github.com/" target="_blank"
+            rel="noopener">GitHub Desktop</a></li>
+        <li class="step">Sign in to your GitHub account</li>
+        <li class="step">Click "File" → "Add Local Repository"</li>
+        <li class="step">Select your MyDzine project folder</li>
+        <li class="step">Click "Publish repository"</li>
+        <li class="step">Name: <strong>mydzine</strong>, keep it private, click "Publish Repository"</li>
+        <li class="step">Commit message: "Initial commit: MyDzine v2.0"</li>
+        <li class="step">Click "Commit to main" then "Push origin"</li>
+      </ol>
+
+      <h2>Step 5: Verify Upload</h2>
+      <ol class="steps">
+        <li class="step">Go to your GitHub repository page</li>
+        <li class="step">Verify all files are uploaded:
+          <ul>
+            <li>✅ <code>package.json</code></li>
+            <li>✅ <code>src/</code> directory</li>
+            <li>✅ <code>public/</code> directory</li>
+            <li>✅ <code>.gitignore</code></li>
+            <li>✅ <code>README.md</code></li>
+          </ul>
+        </li>
+        <li class="step">Verify sensitive files are NOT uploaded:
+          <ul>
+            <li>❌ <code>.env.local</code> (should be in .gitignore)</li>
+            <li>❌ <code>node_modules/</code> (should be in .gitignore)</li>
+          </ul>
+        </li>
+      </ol>
+
+      <h2>Step 6: Update .gitignore (If Needed)</h2>
+      <p>Ensure your <code>.gitignore</code> includes:</p>
+
+      <div class="code">
+        <pre><code># Environment variables
+.env.local
+.env
+.env*.local
+
+# Dependencies
+node_modules/
+.pnp
+.pnp.js
+
+# Build outputs
+.next/
+out/
+dist/
+build/
+
+# Testing
+coverage/
+.nyc_output/
+
+# Misc
+.DS_Store
+*.log
+*.pem
+
+# Debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Temporary files
+*.tmp
+.cache/</code></pre>
+      </div>
+
+      <h2>Next Steps</h2>
+      <p>Now that your code is on GitHub, you can proceed with deployment:</p>
+      <div class="callout success">
+        <ul>
+          <li><a href="./install-vercel.html">Deploy to Vercel</a> (Recommended for beginners, easy setup)</li>
+          <li><a href="./install-aws-ec2.html">Deploy to AWS EC2</a> (Recommended for production, better performance)
+          </li>
+        </ul>
+      </div>
+
+      <div class="callout warning">
+        <strong>🔐 Security Reminders:</strong>
+        <ul>
+          <li>✅ Never commit API keys or secrets to GitHub</li>
+          <li>✅ Keep your repository private if it contains sensitive information</li>
+          <li>✅ Use environment variables for all secrets</li>
+          <li>✅ Review your commits before pushing to ensure no secrets are included</li>
+        </ul>
+      </div>
+    </section>
+  </main>
+</body>
+
+</html>

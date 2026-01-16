@@ -1,0 +1,528 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Frontend Customization – MyDzine Docs</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="./styles.css" />
+  <script defer src="./script.js"></script>
+</head>
+
+<body>
+  <aside class="sidebar">
+    <div class="brand">
+      <img src="./screenshots/logo.svg" alt="MyDzine Logo" />
+      <div>
+        <h1>MyDzine</h1>
+        <p>Documentation v2.0</p>
+      </div>
+    </div>
+    <nav>
+      <a href="./index.html">Welcome</a>
+      <a href="./how-to-use.html">User Guide</a>
+      <a href="./push-to-github.html">How to push to GitHub</a>
+      <a href="./install-vercel.html">How to install on Vercel</a>
+      <a href="./install-aws-ec2.html">How to install on AWS EC2</a>
+      <a href="./clerk-setup.html">Clerk Authentication Setup</a>
+      <a href="./mongodb-setup.html">MongoDB Database Setup</a>
+      <a href="./replicate-setup.html">Replicate API Setup</a>
+      <a href="./env-setup.html">Environment Variables</a>
+      <a href="./stripe-setup.html">Stripe Payment Setup</a>
+      <a class="active" href="./frontend-customization.html">Frontend Customization</a>
+      <a href="./pricing-credits.html">Pricing & Credits</a>
+    </nav>
+    <footer>
+      <small>Built with Next.js 14 & MongoDB</small>
+    </footer>
+  </aside>
+
+  <main class="content">
+    <header class="topbar">
+      <h2>Frontend Customization Guide</h2>
+    </header>
+
+    <section class="prose">
+      <div class="callout info">
+        <strong>🎨 Frontend Customization:</strong> Learn how to customize MyDzine's frontend, including branding,
+        styling, components, layouts, and configuration options. The frontend is built with Next.js 14, Chakra UI
+        v2.4.2, and TypeScript.
+      </div>
+
+      <h2>🏗️ Frontend Architecture</h2>
+
+      <h3>Project Structure</h3>
+      <p>The frontend follows Next.js 14 App Router structure. All code is located in the project root:</p>
+
+      <div class="code">
+        <pre><code>mydzine/
+├── package.json              # Dependencies and scripts
+├── tsconfig.json            # TypeScript configuration
+├── next.config.js           # Next.js configuration
+├── src/                     # Source code
+│   ├── app/                # Next.js App Router pages
+│   │   ├── page.tsx        # Homepage (/)
+│   │   ├── layout.tsx      # Root layout
+│   │   ├── login/          # Login page (/login)
+│   │   ├── sign-up/        # Sign-up page (/sign-up)
+│   │   ├── dashboard/      # Dashboard pages
+│   │   │   ├── page.tsx    # Dashboard home (/dashboard)
+│   │   │   ├── media/      # Media library (/dashboard/media)
+│   │   │   ├── ai-tools/   # AI tools page (/dashboard/ai-tools)
+│   │   │   └── pricing/    # Pricing page (/dashboard/pricing)
+│   │   ├── ai-photo-filter/    # Photo filter tools
+│   │   ├── ai-image-editor/    # Image editor tools
+│   │   ├── ai-art-generator/   # Art generator tools
+│   │   └── api/            # API route handlers
+│   ├── components/         # Reusable React components
+│   │   ├── layout/         # Layout components
+│   │   │   ├── Header.tsx      # Navigation header
+│   │   │   ├── Footer.tsx      # Footer component
+│   │   │   └── PageContainer.tsx   # Page wrapper
+│   │   ├── pages/          # Page components
+│   │   │   ├── HomePage.tsx
+│   │   │   ├── DashboardPage.tsx
+│   │   │   └── ... (tool pages)
+│   │   ├── home/           # Homepage components
+│   │   │   ├── Hero.tsx
+│   │   │   ├── Features.tsx
+│   │   │   ├── Pricing.tsx
+│   │   │   └── UseCases.tsx
+│   │   ├── dashboard/      # Dashboard components
+│   │   │   └── DashboardShell.tsx
+│   │   └── common/         # Shared components
+│   ├── data/               # Configuration data
+│   │   └── dashboard.ts    # Tools and pricing config
+│   ├── core/               # Core utilities
+│   │   ├── utils/          # Utility functions
+│   │   └── clients/        # API clients
+│   └── styles/             # Global styles
+│       └── theme.ts        # Chakra UI theme
+├── public/                 # Static assets
+│   ├── favicon.ico
+│   ├── tool-*.png          # Tool preview images
+│   └── ...
+└── .env.local              # Environment variables</code></pre>
+      </div>
+
+      <h2>🎨 Branding & Visual Customization</h2>
+
+      <h3>1. Logo and Images</h3>
+      <p>Update your branding assets:</p>
+
+      <h4>Logo</h4>
+      <ul>
+        <li><strong>Header Logo:</strong> Update in <code>src/components/layout/Header.tsx</code></li>
+        <li><strong>File Location:</strong> Replace logo image in <code>public/</code> directory</li>
+        <li><strong>Code:</strong>
+          <div class="code">
+            <pre><code>&lt;Image
+  src="/logo.svg"  // Update path to your logo
+  alt="MyDzine"
+  width={120}
+  height={40}
+/&gt;</code></pre>
+          </div>
+        </li>
+      </ul>
+
+      <h4>Favicon and Icons</h4>
+      <ul>
+        <li>Replace <code>public/favicon.ico</code> with your favicon</li>
+        <li>Update <code>public/apple-touch-icon.png</code> for iOS devices</li>
+        <li>Update <code>public/android-chrome-*.png</code> for Android</li>
+      </ul>
+
+      <h4>Tool Preview Images</h4>
+      <ul>
+        <li>Update tool preview images in <code>public/tool-*.png</code></li>
+        <li>Each tool has a preview image (e.g., <code>tool-ai-anime-generator.png</code>)</li>
+        <li>Images should be 800x600px for best quality</li>
+      </ul>
+
+      <h3>2. Site Metadata</h3>
+      <p>Update site metadata in <code>src/app/layout.tsx</code>:</p>
+
+      <div class="code">
+        <pre><code>export const metadata: Metadata = {
+  title: 'MyDzine - AI-Powered Image Generation & Editing',
+  description: 'Transform images with 16+ AI tools. Generate art, edit photos, and create stunning visuals with artificial intelligence.',
+  keywords: ['AI art', 'image generation', 'photo editing', 'AI tools', 'image AI'],
+  authors: [{ name: 'Your Name' }],
+  openGraph: {
+    title: 'MyDzine',
+    description: 'AI-Powered Image Generation & Editing',
+    type: 'website',
+    images: ['/og-image.png'], // Add your Open Graph image
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'MyDzine',
+    description: 'AI-Powered Image Generation & Editing',
+    images: ['/twitter-image.png'], // Add your Twitter image
+  },
+};</code></pre>
+      </div>
+
+      <h2>🎨 Color Scheme & Theme</h2>
+
+      <h3>Chakra UI Theme Configuration</h3>
+      <p>The theme is configured in <code>src/styles/theme.ts</code>. Customize colors, fonts, and component styles:</p>
+
+      <div class="code">
+        <pre><code>import { extendTheme } from "@chakra-ui/react";
+
+const theme = extendTheme({
+  config: {
+    initialColorMode: "dark",
+    useSystemColorMode: false,
+  },
+  colors: {
+    brand: {
+      50: "#f8fafc",
+      100: "#f1f5f9",
+      // ... customize brand colors
+      500: "#1a1a1a",  // Primary brand color
+      600: "#0a0a0a",
+      700: "#000000",
+    },
+  },
+  semanticTokens: {
+    colors: {
+      "bg.canvas": { default: "#05060f" },
+      "bg.surface": { default: "rgba(11, 17, 28, 0.92)" },
+      "text.primary": { default: "#e2e8f0" },
+      "text.muted": { default: "#94a3b8" },
+      // ... customize semantic tokens
+    },
+  },
+  // Component styles
+  components: {
+    Button: {
+      variants: {
+        brand: {
+          bg: "var(--accent)",
+          color: "white",
+          // ... custom button styles
+        },
+      },
+    },
+  },
+});
+
+export default theme;</code></pre>
+      </div>
+
+      <h3>CSS Variables</h3>
+      <p>The theme uses CSS variables for consistent styling across components:</p>
+
+      <div class="code">
+        <pre><code>:root {
+  --bg-canvas: var(--chakra-colors-bg-canvas);
+  --bg-surface: var(--chakra-colors-bg-surface);
+  --text-primary: var(--chakra-colors-text-primary);
+  --text-muted: var(--chakra-colors-text-muted);
+  --accent: var(--chakra-colors-brand-500);
+  --border-subtle: var(--chakra-colors-border-subtle);
+  /* ... more variables */
+}</code></pre>
+      </div>
+
+      <h3>Customize Colors</h3>
+      <ol class="steps">
+        <li class="step">Update brand colors in <code>src/styles/theme.ts</code></li>
+        <li class="step">Modify semantic tokens for backgrounds, text, and borders</li>
+        <li class="step">Update CSS variables if needed</li>
+        <li class="step">Test color contrast for accessibility (WCAG AA/AAA)</li>
+      </ol>
+
+      <h2>📄 Key Pages Customization</h2>
+
+      <h3>Homepage (<code>src/app/page.tsx</code>)</h3>
+      <p>Customize the homepage sections:</p>
+      <ul>
+        <li><strong>Hero Section:</strong> <code>src/components/home/Hero.tsx</code> - Update headline, description, and
+          CTA</li>
+        <li><strong>Features Section:</strong> <code>src/components/home/Features.tsx</code> - Modify feature cards</li>
+        <li><strong>Use Cases:</strong> <code>src/components/home/UseCases.tsx</code> - Update tool categories</li>
+        <li><strong>Pricing Section:</strong> <code>src/components/home/Pricing.tsx</code> - Customize pricing display
+        </li>
+        <li><strong>Showcase:</strong> <code>src/components/home/Showcase.tsx</code> - Update demo content</li>
+      </ul>
+
+      <h3>Authentication Pages</h3>
+      <ul>
+        <li><strong>Login:</strong> <code>src/app/login/page.tsx</code></li>
+        <li><strong>Sign-up:</strong> <code>src/app/sign-up/page.tsx</code></li>
+        <li><strong>Clerk Appearance:</strong> Customize in <code>src/components/Providers.tsx</code></li>
+      </ul>
+
+      <h4>Clerk Customization</h4>
+      <p>Customize Clerk authentication UI in <code>src/components/Providers.tsx</code>:</p>
+
+      <div class="code">
+        <pre><code>&lt;ClerkProvider
+  appearance={{
+    baseTheme: undefined,
+    variables: {
+      colorPrimary: "#06b6d4",
+      colorBackground: "#ffffff",
+      colorText: "#1e293b",
+      colorTextSecondary: "#334155",
+      // Customize Clerk colors
+    },
+    elements: {
+      formButtonPrimary: {
+        // Customize primary button
+      },
+      card: {
+        // Customize card styles
+      },
+    },
+  }}
+&gt;</code></pre>
+      </div>
+
+      <h3>Dashboard Pages</h3>
+      <ul>
+        <li><strong>Dashboard Home:</strong> <code>src/app/dashboard/page.tsx</code> - Tool grid and navigation</li>
+        <li><strong>Media Library:</strong> <code>src/app/dashboard/media/page.tsx</code> - User's generated images</li>
+        <li><strong>AI Tools:</strong> <code>src/app/dashboard/ai-tools/page.tsx</code> - All available tools</li>
+        <li><strong>Pricing:</strong> <code>src/app/dashboard/pricing/page.tsx</code> - Credit packages</li>
+      </ul>
+
+      <h4>Dashboard Shell</h4>
+      <p>Customize dashboard layout in <code>src/components/dashboard/DashboardShell.tsx</code>:</p>
+      <ul>
+        <li>Desktop sidebar navigation</li>
+        <li>Mobile bottom navigation bar</li>
+        <li>Credit display component</li>
+        <li>User menu and logout</li>
+      </ul>
+
+      <h3>AI Tool Pages</h3>
+      <p>Each tool has its own page component:</p>
+      <ul>
+        <li><strong>Photo Filters:</strong> <code>src/app/ai-photo-filter/[tool]/page.tsx</code></li>
+        <li><strong>Image Editors:</strong> <code>src/app/ai-image-editor/[tool]/page.tsx</code></li>
+        <li><strong>Art Generators:</strong> <code>src/app/ai-art-generator/[tool]/page.tsx</code></li>
+      </ul>
+
+      <p>Tool pages share common components in <code>src/components/pages/</code>:</p>
+      <ul>
+        <li><code>ImageToPromptPage.tsx</code></li>
+        <li><code>AIDesignSketchPage.tsx</code></li>
+        <li><code>Converter2DTo3DPage.tsx</code></li>
+        <li>... (one for each tool)</li>
+      </ul>
+
+      <h2>🔧 Configuration Files</h2>
+
+      <h3>Dashboard Tools Configuration</h3>
+      <p>AI tools are configured in <code>src/data/dashboard.ts</code>:</p>
+
+      <div class="code">
+        <pre><code>export const dashboardTools: DashboardTool[] = [
+  {
+    title: "Image to Prompt",
+    description: "Generate detailed prompts from any reference image.",
+    icon: BsLightning,  // React icon component
+    href: "/ai-photo-filter/image-to-prompt",
+    color: "rgba(250, 204, 21, 0.18)",  // Background color
+    iconColor: "#FACC15",  // Icon color
+  },
+  // ... add more tools
+];</code></pre>
+      </div>
+
+      <h4>Add a New Tool</h4>
+      <ol class="steps">
+        <li class="step">Add tool entry to <code>dashboardTools</code> array</li>
+        <li class="step">Create tool page component in <code>src/components/pages/</code></li>
+        <li class="step">Create API route in <code>src/app/api/</code></li>
+        <li class="step">Add route to <code>src/app/</code> directory</li>
+        <li class="step">Update navigation links in <code>Header.tsx</code> if needed</li>
+      </ol>
+
+      <h3>Credit Packages Configuration</h3>
+      <p>Credit packages are configured in <code>src/data/dashboard.ts</code>:</p>
+
+      <div class="code">
+        <pre><code>export const dashboardPricingPlans: DashboardPricingPlan[] = [
+  {
+    name: "250 Credit Pack",
+    credits: 250,
+    promptCredits: 50,
+    price: "$29",
+    pricePerCredit: "$0.12 per credit",
+    description: "Kickstart new ideas with a flexible entry pack.",
+    highlight: false,
+    ctaLabel: "Buy 250 Credits",
+    ctaHref: "/api/checkout/credits?plan=credits-250",
+  },
+  // ... more plans
+];</code></pre>
+      </div>
+
+      <p>See <a href="./pricing-credits.html">Pricing & Credits</a> for detailed customization guide.</p>
+
+      <h2>📱 Responsive Design</h2>
+
+      <h3>Mobile-First Approach</h3>
+      <p>MyDzine is fully responsive and mobile-optimized:</p>
+
+      <ul>
+        <li><strong>Breakpoints:</strong> Uses Chakra UI's default breakpoints:
+          <ul>
+            <li><code>base</code>: 0px (mobile)</li>
+            <li><code>sm</code>: 480px</li>
+            <li><code>md</code>: 768px (tablet)</li>
+            <li><code>lg</code>: 992px (desktop)</li>
+            <li><code>xl</code>: 1280px (large desktop)</li>
+          </ul>
+        </li>
+        <li><strong>Responsive Props:</strong> All components use Chakra UI responsive props:
+          <div class="code">
+            <pre><code>&lt;Text fontSize={{ base: "lg", md: "xl", lg: "2xl" }} /&gt;
+&lt;Box padding={{ base: 4, md: 6, lg: 8 }} /&gt;</code></pre>
+          </div>
+        </li>
+      </ul>
+
+      <h3>Mobile Navigation</h3>
+      <ul>
+        <li><strong>Hamburger Menu:</strong> Mobile drawer navigation in <code>src/components/layout/Header.tsx</code>
+        </li>
+        <li><strong>Bottom Navigation:</strong> Mobile bottom nav bar in
+          <code>src/components/dashboard/DashboardShell.tsx</code></li>
+        <li><strong>Responsive Grids:</strong> Use <code>SimpleGrid</code> with responsive columns:
+          <div class="code">
+            <pre><code>&lt;SimpleGrid columns={{ base: 1, sm: 2, md: 3, lg: 4 }} /&gt;</code></pre>
+          </div>
+        </li>
+      </ul>
+
+      <h3>Mobile Optimization Tips</h3>
+      <ul>
+        <li>✅ Use <code>clamp()</code> for fluid typography</li>
+        <li>✅ Optimize images for mobile (Next.js Image component)</li>
+        <li>✅ Test on iPhone SE (375px width) - smallest common mobile</li>
+        <li>✅ Ensure touch targets are at least 44x44px</li>
+        <li>✅ Use safe area insets for devices with notches</li>
+      </ul>
+
+      <h2>🎯 Common Customizations</h2>
+
+      <h3>Change Header Navigation</h3>
+      <p>Update navigation links in <code>src/components/layout/Header.tsx</code>:</p>
+
+      <div class="code">
+        <pre><code>const navLinks = [
+  {
+    label: "AI Photo Filter",
+    href: "/ai-photo-filter",
+    children: [
+      { label: "2D to 3D Converter", href: "/ai-photo-filter/2d-to-3d-converter" },
+      // ... add/remove children
+    ],
+  },
+  // ... modify navigation structure
+];</code></pre>
+      </div>
+
+      <h3>Customize Tool Display</h3>
+      <ul>
+        <li><strong>Tool Cards:</strong> Update design in <code>src/components/pages/DashboardPage.tsx</code></li>
+        <li><strong>Tool Icons:</strong> Change icons and colors in <code>src/data/dashboard.ts</code></li>
+        <li><strong>Tool Layout:</strong> Modify grid layout and spacing</li>
+      </ul>
+
+      <h3>Modify Button Styles</h3>
+      <p>Customize button variants in <code>src/styles/theme.ts</code>:</p>
+
+      <div class="code">
+        <pre><code>Button: {
+  variants: {
+    brand: {
+      // Primary brand button
+      bg: "var(--accent)",
+      color: "white",
+      _hover: { bg: "var(--accent-strong)" },
+    },
+    ghostOnDark: {
+      // Ghost button for dark backgrounds
+    },
+    glass: {
+      // Glass-morphism button
+      backdropFilter: "blur(14px)",
+    },
+  },
+}</code></pre>
+      </div>
+
+      <h2>🚀 Build and Deployment</h2>
+
+      <h3>Development</h3>
+      <div class="code">
+        <pre><code># Install dependencies
+npm install
+
+# Start development server
+npm run dev
+
+# Application runs on http://localhost:3000
+# API routes available at http://localhost:3000/api</code></pre>
+      </div>
+
+      <h3>Production Build</h3>
+      <div class="code">
+        <pre><code># Build for production
+npm run build
+
+# Start production server
+npm run start
+
+# Or deploy to Vercel/AWS EC2
+# See deployment guides for details</code></pre>
+      </div>
+
+      <h3>Environment Variables</h3>
+      <p>Required environment variables (see <a href="./env-setup.html">Environment Variables</a>):</p>
+      <ul>
+        <li><code>NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY</code> - Clerk public key</li>
+        <li><code>CLERK_SECRET_KEY</code> - Clerk secret key</li>
+        <li><code>NEXT_PUBLIC_APP_URL</code> - Application URL</li>
+        <li>... (see env-setup.html for complete list)</li>
+      </ul>
+
+      <h2>🔍 Testing Customizations</h2>
+
+      <h3>Testing Checklist</h3>
+      <ol class="steps">
+        <li class="step">Test all pages load correctly</li>
+        <li class="step">Verify responsive design on mobile, tablet, desktop</li>
+        <li class="step">Check navigation links work</li>
+        <li class="step">Test authentication flows</li>
+        <li class="step">Verify credit system displays correctly</li>
+        <li class="step">Test tool pages and API integrations</li>
+        <li class="step">Check accessibility (WCAG compliance)</li>
+        <li class="step">Test performance (lighthouse scores)</li>
+      </ol>
+
+      <div class="callout success">
+        <strong>✅ Next Steps:</strong>
+        <ul>
+          <li><a href="./pricing-credits.html">Configure Pricing & Credits</a></li>
+          <li><a href="./env-setup.html">Complete Environment Variables Setup</a></li>
+          <li><a href="./how-to-use.html">Learn how users interact with the UI</a></li>
+        </ul>
+      </div>
+    </section>
+  </main>
+</body>
+
+</html>

@@ -1,0 +1,337 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Stripe Payment Setup – MyDzine Docs</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="./styles.css" />
+  <script defer src="./script.js"></script>
+</head>
+
+<body>
+  <aside class="sidebar">
+    <div class="brand">
+      <img src="./screenshots/logo.svg" alt="MyDzine Logo" />
+      <div>
+        <h1>MyDzine</h1>
+        <p>Documentation v2.0</p>
+      </div>
+    </div>
+    <nav>
+      <a href="./index.html">Welcome</a>
+      <a href="./how-to-use.html">User Guide</a>
+      <a href="./push-to-github.html">How to push to GitHub</a>
+      <a href="./install-vercel.html">How to install on Vercel</a>
+      <a href="./install-aws-ec2.html">How to install on AWS EC2</a>
+      <a href="./clerk-setup.html">Clerk Authentication Setup</a>
+      <a href="./mongodb-setup.html">MongoDB Database Setup</a>
+      <a href="./replicate-setup.html">Replicate API Setup</a>
+      <a href="./env-setup.html">Environment Variables</a>
+      <a class="active" href="./stripe-setup.html">Stripe Payment Setup</a>
+      <a href="./frontend-customization.html">Frontend Customization</a>
+      <a href="./pricing-credits.html">Pricing & Credits</a>
+    </nav>
+    <footer>
+      <small>Built with Next.js 14 & MongoDB</small>
+    </footer>
+  </aside>
+
+  <main class="content">
+    <header class="topbar">
+      <h2>Stripe Payment Setup</h2>
+    </header>
+
+    <section class="prose">
+      <div class="callout info">
+        <strong>💳 Payment System:</strong> MyDzine uses Stripe for secure credit purchases. Stripe handles payment
+        processing, checkout sessions, and webhooks for credit allocation.
+      </div>
+
+      <h2>Why Stripe?</h2>
+
+      <p>Stripe is a complete payment solution that provides:</p>
+      <ul>
+        <li><strong>Secure Payments:</strong> PCI-compliant payment processing</li>
+        <li><strong>Checkout Sessions:</strong> Easy-to-use checkout flow</li>
+        <li><strong>Webhooks:</strong> Real-time payment event notifications</li>
+        <li><strong>Multi-Currency:</strong> Support for multiple currencies</li>
+        <li><strong>Easy Integration:</strong> Simple Next.js integration</li>
+      </ul>
+
+      <h2>📝 Step-by-Step Setup</h2>
+
+      <h3>Step 1: Create Stripe Account</h3>
+      <ol class="steps">
+        <li class="step">Go to <a href="https://stripe.com" target="_blank" rel="noopener">stripe.com</a></li>
+        <li class="step">Click "Sign Up" or "Start Now"</li>
+        <li class="step">Sign up with your email address</li>
+        <li class="step">Verify your email address</li>
+        <li class="step">Complete the onboarding process</li>
+      </ol>
+
+      <h3>Step 2: Get API Keys</h3>
+      <ol class="steps">
+        <li class="step">After signing in, navigate to <strong>Developers → API Keys</strong></li>
+        <li class="step">You'll see two keys:
+          <ul>
+            <li><strong>Publishable Key:</strong> Starts with <code>pk_test_</code> (for test) or <code>pk_live_</code>
+              (for production)</li>
+            <li><strong>Secret Key:</strong> Starts with <code>sk_test_</code> (for test) or <code>sk_live_</code> (for
+              production)</li>
+          </ul>
+        </li>
+        <li class="step">Copy both keys</li>
+        <li class="step">Add them to your <code>.env.local</code> file:
+          <div class="code">
+            <pre><code>NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY=pk_test_xxxxxxxxxxxxx
+STRIPE_SECRET_KEY=sk_test_xxxxxxxxxxxxx</code></pre>
+          </div>
+        </li>
+      </ol>
+
+      <div class="callout warning">
+        <strong>⚠️ Security Note:</strong> Never share your secret key or commit it to version control. The secret key
+        should only be used server-side.
+      </div>
+
+      <h3>Step 3: Create Credit Products</h3>
+      <p>MyDzine uses one-time payments for credit packages. Create products in Stripe:</p>
+
+      <ol class="steps">
+        <li class="step">Navigate to <strong>Products</strong> in the sidebar</li>
+        <li class="step">Click "Add Product"</li>
+        <li class="step">Create three products for your credit packages:
+          <ul>
+            <li><strong>250 Credit Pack:</strong> One-time payment, $29</li>
+            <li><strong>750 Credit Pack:</strong> One-time payment, $69</li>
+            <li><strong>2000 Credit Pack:</strong> One-time payment, $149</li>
+          </ul>
+        </li>
+        <li class="step">For each product:
+          <ul>
+            <li>Enter product name (e.g., "250 Credit Pack")</li>
+            <li>Enter description</li>
+            <li>Set price (one-time payment)</li>
+            <li>Save the product</li>
+          </ul>
+        </li>
+        <li class="step">Copy the Price ID for each product (starts with <code>price_</code>)</li>
+      </ol>
+
+      <h3>Step 4: Configure Credit Packages in Code</h3>
+      <p>Update credit packages in <code>src/data/dashboard.ts</code>:</p>
+
+      <div class="code">
+        <pre><code>export const dashboardPricingPlans: DashboardPricingPlan[] = [
+  {
+    name: "250 Credit Pack",
+    credits: 250,
+    promptCredits: 50,
+    price: "$29",
+    pricePerCredit: "$0.12 per credit",
+    description: "Kickstart new ideas with a flexible entry pack.",
+    ctaLabel: "Buy 250 Credits",
+    ctaHref: "/api/checkout/credits?plan=credits-250",
+  },
+  {
+    name: "750 Credit Pack",
+    credits: 750,
+    promptCredits: 150,
+    price: "$69",
+    pricePerCredit: "$0.09 per credit",
+    description: "Best value for creators shipping content every week.",
+    highlight: true,
+    ctaLabel: "Buy 750 Credits",
+    ctaHref: "/api/checkout/credits?plan=credits-750",
+  },
+  {
+    name: "2000 Credit Pack",
+    credits: 2000,
+    promptCredits: 400,
+    price: "$149",
+    pricePerCredit: "$0.075 per credit",
+    description: "Scale production with the lowest cost per credit.",
+    ctaLabel: "Buy 2000 Credits",
+    ctaHref: "/api/checkout/credits?plan=credits-2000",
+  },
+];</code></pre>
+      </div>
+
+      <h3>Step 5: Configure Checkout API</h3>
+      <p>Update checkout route in <code>src/app/api/checkout/credits/route.ts</code> to map plans to Stripe Price IDs:
+      </p>
+
+      <div class="code">
+        <pre><code>const PLAN_PRICE_MAP: Record<string, string> = {
+  'credits-250': process.env.STRIPE_PRICE_250 || 'price_xxxxxxxxxxxxx',
+  'credits-750': process.env.STRIPE_PRICE_750 || 'price_xxxxxxxxxxxxx',
+  'credits-2000': process.env.STRIPE_PRICE_2000 || 'price_xxxxxxxxxxxxx',
+};</code></pre>
+      </div>
+
+      <p>Add these Price IDs to your <code>.env.local</code>:</p>
+
+      <div class="code">
+        <pre><code>STRIPE_PRICE_250=price_xxxxxxxxxxxxx
+STRIPE_PRICE_750=price_xxxxxxxxxxxxx
+STRIPE_PRICE_2000=price_xxxxxxxxxxxxx</code></pre>
+      </div>
+
+      <h3>Step 6: Set Up Webhooks</h3>
+      <p>Webhooks are essential for automatically adding credits to user accounts after payment.</p>
+
+      <ol class="steps">
+        <li class="step">Navigate to <strong>Developers → Webhooks</strong> in Stripe Dashboard</li>
+        <li class="step">Click "Add Endpoint"</li>
+        <li class="step">Configure the webhook:
+          <ul>
+            <li><strong>Endpoint URL:</strong>
+              <div class="code">
+                <pre><code># Development (use ngrok for local testing)
+https://your-ngrok-url.ngrok.io/api/webhooks/stripe
+
+# Production
+https://yourdomain.com/api/webhooks/stripe</code></pre>
+              </div>
+            </li>
+            <li><strong>Events to Listen For:</strong> Select these events:
+              <ul>
+                <li>✅ <code>checkout.session.completed</code> - Payment successful</li>
+                <li>✅ <code>payment_intent.succeeded</code> - Payment completed</li>
+                <li>✅ <code>payment_intent.payment_failed</code> - Payment failed</li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li class="step">Click "Add Endpoint"</li>
+        <li class="step">Copy the <strong>Signing Secret</strong> (starts with <code>whsec_</code>)</li>
+        <li class="step">Add it to your <code>.env.local</code>:
+          <div class="code">
+            <pre><code>STRIPE_WEBHOOK_SECRET=whsec_xxxxxxxxxxxxx</code></pre>
+          </div>
+        </li>
+      </ol>
+
+      <div class="callout warning">
+        <strong>⚠️ Webhook Testing (Local Development):</strong>
+        <ul>
+          <li>Use <a href="https://ngrok.com" target="_blank" rel="noopener">ngrok</a> to expose your local server</li>
+          <li>Run: <code>ngrok http 3000</code></li>
+          <li>Use the ngrok URL as your webhook endpoint</li>
+          <li>Update the webhook URL in Stripe dashboard</li>
+        </ul>
+      </div>
+
+      <h3>Step 7: Configure Application URLs</h3>
+      <ol class="steps">
+        <li class="step">Navigate to <strong>Settings → Branding</strong> in Stripe Dashboard</li>
+        <li class="step">Configure your application details:
+          <ul>
+            <li>Business name: <strong>MyDzine</strong></li>
+            <li>Support email: Your support email</li>
+            <li>Support phone: Your support phone (optional)</li>
+          </ul>
+        </li>
+        <li class="step">Configure redirect URLs in your checkout API route:
+          <div class="code">
+            <pre><code>success_url: `${process.env.NEXT_PUBLIC_APP_URL}/dashboard/pricing?session_id={CHECKOUT_SESSION_ID}&success=true`,
+cancel_url: `${process.env.NEXT_PUBLIC_APP_URL}/dashboard/pricing?canceled=true`,</code></pre>
+          </div>
+        </li>
+      </ol>
+
+      <h3>Step 8: Test Payment Flow</h3>
+      <ol class="steps">
+        <li class="step">Ensure all environment variables are set in <code>.env.local</code></li>
+        <li class="step">Start your development server: <code>npm run dev</code></li>
+        <li class="step">Navigate to Dashboard → Pricing</li>
+        <li class="step">Click "Buy Credits" on any package</li>
+        <li class="step">Use Stripe test card: <code>4242 4242 4242 4242</code></li>
+        <li class="step">Use any future expiry date and any 3-digit CVC</li>
+        <li class="step">Complete the payment</li>
+        <li class="step">Verify credits are added to your account</li>
+      </ol>
+
+      <h2>🔑 Production Setup</h2>
+
+      <h3>Switching to Production Keys</h3>
+      <ol class="steps">
+        <li class="step">In Stripe Dashboard, toggle from "Test" to "Live" mode</li>
+        <li class="step">Get your production API keys</li>
+        <li class="step">Create production products and prices</li>
+        <li class="step">Update environment variables on your production server:
+          <div class="code">
+            <pre><code>NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY=pk_live_xxxxxxxxxxxxx
+STRIPE_SECRET_KEY=sk_live_xxxxxxxxxxxxx
+STRIPE_WEBHOOK_SECRET=whsec_xxxxxxxxxxxxx
+STRIPE_PRICE_250=price_xxxxxxxxxxxxx
+STRIPE_PRICE_750=price_xxxxxxxxxxxxx
+STRIPE_PRICE_2000=price_xxxxxxxxxxxxx</code></pre>
+          </div>
+        </li>
+        <li class="step">Update webhook URL to your production domain</li>
+        <li class="step">Test payment in production with a real card</li>
+      </ol>
+
+      <h2>🧪 Testing with Stripe Test Cards</h2>
+
+      <p>Stripe provides test cards for testing different scenarios:</p>
+      <table>
+        <thead>
+          <tr>
+            <th>Card Number</th>
+            <th>Scenario</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>4242 4242 4242 4242</code></td>
+            <td>Successful payment</td>
+          </tr>
+          <tr>
+            <td><code>4000 0000 0000 0002</code></td>
+            <td>Card declined</td>
+          </tr>
+          <tr>
+            <td><code>4000 0000 0000 9995</code></td>
+            <td>Insufficient funds</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p>Use any future expiry date (e.g., 12/25) and any 3-digit CVC (e.g., 123).</p>
+
+      <h2>✅ Verification Checklist</h2>
+
+      <div class="callout">
+        <strong>Ensure you have:</strong>
+        <ul>
+          <li>✅ Stripe account created</li>
+          <li>✅ API keys added to <code>.env.local</code></li>
+          <li>✅ Credit products created in Stripe</li>
+          <li>✅ Price IDs configured in code</li>
+          <li>✅ Webhook configured and secret added</li>
+          <li>✅ Checkout API route configured</li>
+          <li>✅ Test payment completed successfully</li>
+          <li>✅ Credits added to test account</li>
+        </ul>
+      </div>
+
+      <div class="callout success">
+        <strong>✅ Next Steps:</strong> After Stripe is configured:
+        <ul>
+          <li><a href="./env-setup.html">Complete Environment Variables Setup</a></li>
+          <li><a href="./pricing-credits.html">Configure Pricing & Credits</a></li>
+          <li><a href="./how-to-use.html">Learn how to use MyDzine</a></li>
+        </ul>
+      </div>
+    </section>
+  </main>
+</body>
+
+</html>

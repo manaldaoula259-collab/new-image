@@ -1,0 +1,372 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>MyDzine – Documentation</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="./styles.css" />
+  <script defer src="./script.js"></script>
+</head>
+
+<body>
+  <aside class="sidebar">
+    <div class="brand">
+      <img src="./screenshots/logo.svg" alt="MyDzine Logo" />
+      <div>
+        <h1>MyDzine</h1>
+        <p>Documentation v2.0</p>
+      </div>
+    </div>
+    <nav>
+      <a class="active" href="./index.html">Welcome</a>
+      <a href="./how-to-use.html">User Guide</a>
+      <a href="./push-to-github.html">How to push to GitHub</a>
+      <a href="./install-vercel.html">How to install on Vercel</a>
+      <a href="./install-aws-ec2.html">How to install on AWS EC2</a>
+      <a href="./clerk-setup.html">Clerk Authentication Setup</a>
+      <a href="./mongodb-setup.html">MongoDB Database Setup</a>
+      <a href="./replicate-setup.html">Replicate API Setup</a>
+      <a href="./env-setup.html">Environment Variables</a>
+      <a href="./stripe-setup.html">Stripe Payment Setup</a>
+      <a href="./frontend-customization.html">Frontend Customization</a>
+      <a href="./pricing-credits.html">Pricing & Credits</a>
+    </nav>
+    <footer>
+      <small>Built with Next.js 14 & MongoDB</small>
+    </footer>
+  </aside>
+
+  <main class="content">
+    <header class="topbar">
+      <h2>Welcome to MyDzine</h2>
+    </header>
+
+    <section class="prose">
+      <div class="version-info">
+        <div class="version">Version 2.0</div>
+        <div class="date">Updated January 2026</div>
+      </div>
+
+      <div class="callout info">
+        <strong>🚀 Welcome to MyDzine v2.0!</strong> This comprehensive documentation will guide you through setting up
+        and deploying your AI-powered creative platform. With 100+ AI tools spanning image generation, video creation,
+        photo editing, and advanced ControlNet features, MyDzine is the most complete AI creative suite available.
+      </div>
+
+      <h2>🎯 Overview</h2>
+
+      <p><strong>MyDzine</strong> is a comprehensive AI-powered creative platform featuring <strong>100+ AI
+          tools</strong> across 11 categories for image generation, video creation, editing, and transformation. Whether
+        you're creating AI art, editing photos, generating videos, or using advanced ControlNet features, MyDzine offers
+        industry-leading solutions powered by Replicate, OpenAI, and cutting-edge AI models.</p>
+
+      <div class="feature-grid">
+        <div class="feature-card">
+          <h3>🖼️ AI Image Models (40+ Models)</h3>
+          <p>FLUX 1.1 Pro, Ideogram V3, Seedream 4.0, Recraft V3, SDXL Lightning, Playground V3, and 30+ more
+            cutting-edge models.</p>
+        </div>
+
+        <div class="feature-card">
+          <h3>🎥 AI Video Models (12 Models)</h3>
+          <p>Kling 2.0, Luma Dream Machine, Runway Gen-3, Pika Video, Hunyuan Video, AnimateDiff Lightning, and more.
+          </p>
+        </div>
+
+        <div class="feature-card">
+          <h3>🎨 Photo Converter (15 Styles)</h3>
+          <p>Transform photos to Pixar, Disney, Ghibli, Lego, Clay, 3D, Cyberpunk, and many more artistic styles.</p>
+        </div>
+
+        <div class="feature-card">
+          <h3>✨ Image Effects (13 Tools)</h3>
+          <p>Face swap, album covers, clothes changer, Halloween filters, New Yorker cartoons, and unique effects.</p>
+        </div>
+
+        <div class="feature-card">
+          <h3>🛠️ Photo Filters (6 Tools)</h3>
+          <p>Image-to-prompt, AI anime filter, style transfer, 2D-to-3D, design sketch, and sketch-to-art.</p>
+        </div>
+
+        <div class="feature-card">
+          <h3>✂️ Image Editors (7 Tools)</h3>
+          <p>Remove/add objects, background removal, photo enhancer, expand images, vectorize, and watermark remover.
+          </p>
+        </div>
+
+        <div class="feature-card">
+          <h3>⚡ AI Upscalers (6 Tools)</h3>
+          <p>Real-ESRGAN 4x+, Clarity Upscaler, SUPIR, GFPGAN face restore, CodeFormer, and anime upscaler.</p>
+        </div>
+
+        <div class="feature-card">
+          <h3>🎮 ControlNet & Guidance (11 Tools)</h3>
+          <p>Canny, Depth, Pose, Scribble, Line Art, QR Code, IP-Adapter, InstantID, PhotoMaker, and more.</p>
+        </div>
+
+        <div class="feature-card">
+          <h3>🖼️ Background Tools (4 Tools)</h3>
+          <p>Advanced background remover, generator, blur, and replace tools.</p>
+        </div>
+
+        <div class="feature-card">
+          <h3>👤 Portrait Tools (6 Tools)</h3>
+          <p>AI headshots, age progression, gender swap, makeup, hairstyle changer, and expression editor.</p>
+        </div>
+
+        <div class="feature-card">
+          <h3>🎭 Art Generators (5 Tools)</h3>
+          <p>Character generator, anime generator, comic generator, coloring book, and vector image generator.</p>
+        </div>
+
+        <div class="feature-card">
+          <h3>👑 Admin Panel</h3>
+          <p>Comprehensive dashboard for user management, analytics, media moderation, platform settings, and feature
+            flags.</p>
+        </div>
+
+        <div class="feature-card">
+          <h3>💳 Credit System</h3>
+          <p>Flexible credit-based pricing with packages: 250, 750, and 2000 credits managed via Stripe integration.</p>
+        </div>
+
+        <div class="feature-card">
+          <h3>📱 Fully Responsive</h3>
+          <p>Premium dark theme UI with Chakra UI, glassmorphism design, and mobile-optimized interface.</p>
+        </div>
+      </div>
+
+
+      <h2>🏗️ System Architecture</h2>
+
+      <div class="callout success">
+        <strong>Tech Stack:</strong>
+        <ul>
+          <li><strong>Framework:</strong> Next.js 14 (App Router) - Monolithic Architecture</li>
+          <li><strong>Language:</strong> TypeScript</li>
+          <li><strong>UI Library:</strong> Chakra UI v2.4.2</li>
+          <li><strong>Database:</strong> MongoDB with Mongoose ODM</li>
+          <li><strong>Authentication:</strong> Clerk (Complete authentication solution)</li>
+          <li><strong>Payments:</strong> Stripe (Credit packages and subscriptions)</li>
+          <li><strong>AI Integration:</strong> Replicate API (Google Nano Banana & Flux models)</li>
+          <li><strong>Storage:</strong> AWS S3 (Image storage and hosting)</li>
+          <li><strong>Analytics:</strong> Vercel Analytics</li>
+          <li><strong>Deployment:</strong> AWS EC2 (recommended) or Vercel</li>
+        </ul>
+      </div>
+
+      <h2>🚀 Complete Feature List</h2>
+
+      <h3>AI Image Models (40+ Models)</h3>
+      <ul>
+        <li><strong>FLUX Series:</strong> FLUX 1.1 Pro, Pro Ultra, Schnell, Dev, Pro, Kontext Pro/Max, Fill Pro, Redux,
+          Canny Pro, Depth Pro</li>
+        <li><strong>Top Models:</strong> Seedream 3.0/4.0, Ideogram V3, Ideogram V2 Turbo, Recraft V3/SVG, Hidream I1
+          (Full/Dev/Fast)</li>
+        <li><strong>Stable Diffusion:</strong> SD 3.5 Large, SD 3.5 Turbo, SDXL, SDXL Lightning, Playground V3, Kolors
+        </li>
+        <li><strong>Specialized:</strong> Juggernaut XL, RealVisXL V5, Dreamshaper XL, Proteus V0.5, AnimagineXL V3.1,
+          Pony Diffusion XL</li>
+        <li><strong>More:</strong> OpenJourney V4, Pixart Sigma, Kandinsky 3.0, Wuerstchen, Qwen VL, Hunyuan, Kling 2.0,
+          Sana, Midjourney Style, DALL-E 3</li>
+      </ul>
+
+      <h3>AI Video Models (12 Models)</h3>
+      <ul>
+        <li>Kling 2.0 Video, Minimax Video, Hunyuan Video, Wan 2.1 Video, LTX Video</li>
+        <li>CogVideoX-5B, Stable Video Diffusion, AnimateDiff Lightning</li>
+        <li>Luma Dream Machine, Runway Gen-3, Pika Video, Image-to-Video</li>
+      </ul>
+
+      <h3>AI Photo Converter (15 Styles)</h3>
+      <ul>
+        <li>Studio Ghibli, Action Figure, Pet to Human, Watercolor, Clay</li>
+        <li>Illustration, Pixel Art, Pixar, Lego, 3D Render</li>
+        <li>Disney, Cartoon, Cyberpunk, Simpsons, Oil Painting</li>
+      </ul>
+
+      <h3>AI Image Effects (13 Tools)</h3>
+      <ul>
+        <li>AI Face Swap, New Yorker Cartoon, Album Cover, Kpop Demon Hunter</li>
+        <li>Pet Passport Photo, Labubu Doll, Ghibli Generator, Clothes Changer</li>
+        <li>Halloween Filter & Costumes, Zootopia Filter, Christmas Filter</li>
+      </ul>
+
+      <h3>AI Photo Filters (6 Tools)</h3>
+      <ul>
+        <li><strong>Image-to-Prompt:</strong> Generate detailed prompts from any reference image</li>
+        <li><strong>AI Design Sketch:</strong> Transform sketches into polished concept designs</li>
+        <li><strong>AI Anime Filter:</strong> Convert portraits into vibrant anime artwork</li>
+        <li><strong>AI Style Transfer:</strong> Apply artistic styles instantly</li>
+        <li><strong>2D to 3D Converter:</strong> Convert flat images into 3D models</li>
+        <li><strong>Turn Sketch to Art:</strong> Transform rough sketches into finished artwork</li>
+      </ul>
+
+      <h3>AI Image Editors (7 Tools)</h3>
+      <ul>
+        <li><strong>Remove Background:</strong> Studio-quality background removal</li>
+        <li><strong>Remove/Add Objects:</strong> Erase or insert elements seamlessly</li>
+        <li><strong>AI Photo Enhancer:</strong> Upscale and sharpen with natural detail</li>
+        <li><strong>AI Photo Expand:</strong> Extend borders with generative fill</li>
+        <li><strong>Vectorize Image:</strong> Convert rasters to clean vectors</li>
+        <li><strong>Watermark Remover:</strong> Clean watermark removal</li>
+      </ul>
+
+      <h3>AI Upscalers (6 Tools)</h3>
+      <ul>
+        <li>Real-ESRGAN 4x+ (4x upscaling), Clarity Upscaler, SUPIR (super-resolution)</li>
+        <li>GFPGAN Face Restore, CodeFormer (face restoration), Anime Upscaler</li>
+      </ul>
+
+      <h3>ControlNet & Guidance (11 Tools)</h3>
+      <ul>
+        <li><strong>Edge/Depth:</strong> Canny, Soft Edge, Line Art, Depth</li>
+        <li><strong>Pose/Structure:</strong> Pose control, Scribble</li>
+        <li><strong>Identity:</strong> IP-Adapter, IP-Adapter Face, InstantID, PhotoMaker</li>
+        <li><strong>Special:</strong> QR Code Generator (artistic functional QR codes)</li>
+      </ul>
+
+      <h3>Background Tools (4 Tools)</h3>
+      <ul>
+        <li>Background Remover Pro, Background Generator, Background Blur, Background Replace</li>
+      </ul>
+
+      <h3>Portrait Tools (6 Tools)</h3>
+      <ul>
+        <li>AI Headshot Generator, Age Progression, Gender Swap</li>
+        <li>AI Makeup, Hair Style Changer, Expression Editor</li>
+      </ul>
+
+      <h3>AI Art Generators (5 Tools)</h3>
+      <ul>
+        <li>AI Character Generator, AI Anime Generator, AI Comic Generator</li>
+        <li>AI Coloring Book Generator, AI Vector Image Generator</li>
+      </ul>
+
+
+      <h2>📋 Prerequisites</h2>
+
+      <div class="callout warning">
+        <strong>Before you begin, ensure you have:</strong>
+        <ul>
+          <li>Node.js 18+ installed</li>
+          <li>MongoDB database (Atlas recommended)</li>
+          <li>Clerk account (for authentication)</li>
+          <li>Replicate API token (for AI processing)</li>
+          <li>Stripe account (for payment processing)</li>
+          <li>AWS S3 bucket (for image storage)</li>
+          <li>AWS credentials (Access Key ID and Secret Access Key)</li>
+        </ul>
+      </div>
+
+      <h2>⚡ Quick Start</h2>
+
+      <ol>
+        <li><strong>Clone:</strong> Get the repository from GitHub</li>
+        <li><strong>Install:</strong> Run <code>npm install</code> to install dependencies</li>
+        <li><strong>Environment Setup:</strong> Configure all required API keys in <code>.env.local</code></li>
+        <li><strong>Database:</strong> Set up MongoDB connection</li>
+        <li><strong>Authentication:</strong> Configure Clerk authentication</li>
+        <li><strong>Storage:</strong> Set up AWS S3 bucket</li>
+        <li><strong>Start:</strong> Run <code>npm run dev</code> to start development server</li>
+        <li><strong>Deploy:</strong> Follow deployment guides for AWS EC2 or Vercel</li>
+      </ol>
+
+      <div class="callout info">
+        <strong>💡 Pro Tip:</strong> For production use, AWS EC2 is recommended for better performance and no file size
+        limitations. Vercel has a 10-second function timeout that may affect some AI processing operations.
+      </div>
+
+      <h2>💎 Pricing & Credits</h2>
+
+      <h3>Credit Packages</h3>
+      <div class="callout">
+        <table>
+          <thead>
+            <tr>
+              <th>Package</th>
+              <th>Credits</th>
+              <th>Prompt Credits</th>
+              <th>Price</th>
+              <th>Price/Credit</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>250 Credit Pack</td>
+              <td>250</td>
+              <td>50</td>
+              <td>$29</td>
+              <td>$0.12</td>
+            </tr>
+            <tr>
+              <td>750 Credit Pack</td>
+              <td>750</td>
+              <td>150</td>
+              <td>$69</td>
+              <td>$0.09</td>
+            </tr>
+            <tr>
+              <td>2000 Credit Pack</td>
+              <td>2000</td>
+              <td>400</td>
+              <td>$149</td>
+              <td>$0.075</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2>📚 Documentation Sections</h2>
+
+      <div class="feature-grid">
+        <div class="feature-card">
+          <h3>🎯 User Guide</h3>
+          <p>Complete end-user documentation for using AI tools, managing media, and navigating the dashboard.</p>
+        </div>
+
+        <div class="feature-card">
+          <h3>🚀 Deployment</h3>
+          <p>Step-by-step guides for deploying to AWS EC2 (recommended) or Vercel.</p>
+        </div>
+
+        <div class="feature-card">
+          <h3>⚙️ Configuration</h3>
+          <p>Environment setup, API integrations (Clerk, Replicate, Stripe), and system configuration.</p>
+        </div>
+
+        <div class="feature-card">
+          <h3>🎨 Customization</h3>
+          <p>Frontend modifications, theming, pricing configuration, and feature customization guides.</p>
+        </div>
+      </div>
+
+      <h2>🆘 Support & Resources</h2>
+
+      <div class="callout">
+        <strong>Need Help?</strong>
+        <ul>
+          <li><strong>Documentation:</strong> Comprehensive guides for all features</li>
+          <li><strong>README:</strong> Check the main README.md for detailed information</li>
+          <li><strong>Issues:</strong> Report issues on GitHub</li>
+          <li><strong>Community:</strong> Join our developer community</li>
+        </ul>
+      </div>
+
+      <p><strong>Ready to get started?</strong> Follow our step-by-step deployment guides. Each section includes
+        detailed instructions, code examples, and troubleshooting tips.</p>
+
+      <div style="text-align: center; margin: 2rem 0;">
+        <a href="./how-to-use.html" class="btn">Start with User Guide →</a>
+        <a href="./install-aws-ec2.html" class="btn secondary">Deploy to AWS EC2 →</a>
+      </div>
+    </section>
+  </main>
+</body>
+
+</html>

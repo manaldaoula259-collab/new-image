@@ -1,0 +1,579 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>User Guide – MyDzine Docs</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="./styles.css" />
+  <script defer src="./script.js"></script>
+</head>
+
+<body>
+  <aside class="sidebar">
+    <div class="brand">
+      <img src="./screenshots/logo.svg" alt="MyDzine Logo" />
+      <div>
+        <h1>MyDzine</h1>
+        <p>Documentation v2.0</p>
+      </div>
+    </div>
+    <nav>
+      <a href="./index.html">Welcome</a>
+      <a class="active" href="./how-to-use.html">User Guide</a>
+      <a href="./push-to-github.html">How to push to GitHub</a>
+      <a href="./install-vercel.html">How to install on Vercel</a>
+      <a href="./install-aws-ec2.html">How to install on AWS EC2</a>
+      <a href="./clerk-setup.html">Clerk Authentication Setup</a>
+      <a href="./mongodb-setup.html">MongoDB Database Setup</a>
+      <a href="./replicate-setup.html">Replicate API Setup</a>
+      <a href="./env-setup.html">Environment Variables</a>
+      <a href="./stripe-setup.html">Stripe Payment Setup</a>
+      <a href="./frontend-customization.html">Frontend Customization</a>
+      <a href="./pricing-credits.html">Pricing & Credits</a>
+    </nav>
+    <footer>
+      <small>Built with Next.js 14 & MongoDB</small>
+    </footer>
+  </aside>
+
+  <main class="content">
+    <header class="topbar">
+      <h2>User Guide</h2>
+    </header>
+
+    <section class="prose">
+      <div class="callout info">
+        <strong>🎯 Complete User Guide:</strong> Learn how to use MyDzine v2.0 with 100+ AI tools across 11 categories -
+        from AI image generation with 40+ models to video creation with 12 models, plus photo conversion, effects,
+        editing, upscaling, ControlNet, backgrounds, portraits, and art generation.
+      </div>
+
+      <h2>🚀 Getting Started</h2>
+
+      <h3>1. Account Creation</h3>
+      <ol>
+        <li><strong>Sign Up:</strong> Click "Get Started" or "Sign Up" on the homepage</li>
+        <li><strong>Choose Method:</strong> Sign up with email/password or Google OAuth</li>
+        <li><strong>Verify Email:</strong> Check your email and verify your account (if required)</li>
+        <li><strong>Dashboard Access:</strong> Automatically redirected to your dashboard after registration</li>
+      </ol>
+
+      <h3>2. Understanding Credits</h3>
+      <div class="callout success">
+        <strong>💎 Credit System:</strong>
+        <ul>
+          <li><strong>Credit Packages:</strong> Purchase credits in packages (250, 750, 2000 credits)</li>
+          <li><strong>Tool Costs:</strong> Each AI tool operation costs 5 credits (varies by tool complexity)</li>
+          <li><strong>Prompt Credits:</strong> Separate credits for prompt generation (50, 150, 400 included in
+            packages)</li>
+          <li><strong>Buy More:</strong> Purchase credits from Dashboard → Pricing</li>
+        </ul>
+      </div>
+
+      <h2>🎨 Using AI Tools</h2>
+
+      <h3>AI Image Models (40+ Models)</h3>
+      <p>Generate images using cutting-edge AI models from FLUX, Ideogram, Seedream, Recraft, Stable Diffusion, and
+        more.</p>
+      <ol>
+        <li><strong>Navigate:</strong> Go to Dashboard → AI Image Models</li>
+        <li><strong>Select Model:</strong> Choose from 40+ models including FLUX 1.1 Pro, Ideogram V3, Seedream 4.0,
+          etc.</li>
+        <li><strong>Enter Prompt:</strong> Describe the image you want to generate</li>
+        <li><strong>Adjust Settings:</strong> Configure aspect ratio, steps, guidance scale (varies by model)</li>
+        <li><strong>Generate:</strong> Click "Generate" to create your image</li>
+        <li><strong>Save:</strong> Download or save to Media Library</li>
+      </ol>
+
+      <h3>AI Video Models (12 Models)</h3>
+      <p>Create stunning videos using models from Kling, Luma, Runway, Minimax, Hunyuan, and more.</p>
+      <ol>
+        <li><strong>Navigate:</strong> Go to Dashboard → AI Video Models</li>
+        <li><strong>Select Model:</strong> Choose from Kling 2.0, Luma Dream Machine, Runway Gen-3, etc.</li>
+        <li><strong>Input:</strong> Enter text prompt or upload reference image (model-dependent)</li>
+        <li><strong>Configure:</strong> Set aspect ratio and other parameters</li>
+        <li><strong>Generate:</strong> Click "Generate Video"</li>
+        <li><strong>Download:</strong> Save your generated video</li>
+      </ol>
+
+      <h3>AI Photo Converter (15 Styles)</h3>
+      <p>Transform photos into various artistic styles including Ghibli, Pixar, Disney, 3D, and more.</p>
+      <ol>
+        <li><strong>Navigate:</strong> Go to Dashboard → AI Photo Converter</li>
+        <li><strong>Choose Style:</strong> Select from 15 styles (Ghibli, Pixar, Lego, Cartoon, etc.)</li>
+        <li><strong>Upload Photo:</strong> Upload your photo</li>
+        <li><strong>Generate:</strong> Click "Convert" to transform your photo</li>
+        <li><strong>Save:</strong> Download or save to Media Library</li>
+      </ol>
+
+      <h3>AI Image Effects (13 Tools)</h3>
+      <p>Apply special effects like face swap, Halloween filters, clothes changer, and more.</p>
+      <ol>
+        <li><strong>Navigate:</strong> Go to Dashboard → AI Image Effects</li>
+        <li><strong>Select Effect:</strong> Choose from face swap, album cover, filters, etc.</li>
+        <li><strong>Upload Image:</strong> Upload your photo</li>
+        <li><strong>Configure:</strong> Adjust effect-specific settings</li>
+        <li><strong>Generate:</strong> Apply the effect</li>
+      </ol>
+
+      <h3>AI Photo Filters (6 Tools)</h3>
+
+      <h4>1. Image-to-Prompt Generator</h4>
+      <ol>
+        <li><strong>Navigate:</strong> Go to <code>/ai-photo-filter/image-to-prompt</code></li>
+        <li><strong>Upload Image:</strong> Click "Upload Image" or drag and drop an image</li>
+        <li><strong>Generate Prompt:</strong> Click "Generate Prompt" button</li>
+        <li><strong>Review Result:</strong> AI creates a detailed, ready-to-use prompt</li>
+        <li><strong>Save Prompt:</strong> Click "Save to Media Library" to save the prompt</li>
+      </ol>
+
+      <h4>2. AI Style Transfer</h4>
+      <ol>
+        <li><strong>Navigate:</strong> Go to <code>/ai-photo-filter/ai-style-transfer</code></li>
+        <li><strong>Upload Image:</strong> Upload your source image</li>
+        <li><strong>Enter Prompt:</strong> Describe the style you want to apply</li>
+        <li><strong>Generate:</strong> Click "Apply Style" to transform your image</li>
+        <li><strong>Download:</strong> Save or download the transformed image</li>
+      </ol>
+
+      <h4>3. AI Anime Filter</h4>
+      <ol>
+        <li><strong>Navigate:</strong> Go to <code>/ai-photo-filter/ai-anime-filter</code></li>
+        <li><strong>Upload Portrait:</strong> Upload a portrait image</li>
+        <li><strong>Generate:</strong> Click "Transform to Anime"</li>
+        <li><strong>Result:</strong> Get an anime-style version of your portrait</li>
+      </ol>
+
+      <h4>4. 2D to 3D Converter</h4>
+      <ol>
+        <li><strong>Navigate:</strong> Go to <code>/ai-photo-filter/2d-to-3d-converter</code></li>
+        <li><strong>Upload Image:</strong> Upload a 2D image</li>
+        <li><strong>Generate:</strong> Click "Convert to 3D"</li>
+        <li><strong>Result:</strong> Get a 3D-style conversion</li>
+      </ol>
+
+      <h4>5. Turn Sketch to Art</h4>
+      <ol>
+        <li><strong>Navigate:</strong> Go to <code>/ai-photo-filter/turn-sketch-to-art</code></li>
+        <li><strong>Upload Sketch:</strong> Upload your sketch image</li>
+        <li><strong>Generate:</strong> Click "Transform to Art"</li>
+        <li><strong>Result:</strong> Get a polished, finished artwork</li>
+      </ol>
+
+      <h4>6. AI Design Sketch</h4>
+      <ol>
+        <li><strong>Navigate:</strong> Go to <code>/ai-photo-filter/ai-design-sketch</code></li>
+        <li><strong>Upload Sketch:</strong> Upload your design sketch</li>
+        <li><strong>Generate:</strong> Click "Generate Design"</li>
+        <li><strong>Result:</strong> Get a polished concept design</li>
+      </ol>
+
+      <h3>AI Image Editors (8 Tools)</h3>
+
+      <h4>1. Remove Background</h4>
+      <ol>
+        <li><strong>Navigate:</strong> Go to <code>/ai-image-editor/remove-background</code></li>
+        <li><strong>Upload Image:</strong> Upload image with background</li>
+        <li><strong>Process:</strong> Click "Remove Background"</li>
+        <li><strong>Result:</strong> Get image with transparent background</li>
+      </ol>
+
+      <h4>2. Remove Object from Image</h4>
+      <ol>
+        <li><strong>Navigate:</strong> Go to <code>/ai-image-editor/remove-object-from-image</code></li>
+        <li><strong>Upload Image:</strong> Upload image with unwanted object</li>
+        <li><strong>Enter Prompt:</strong> Describe what to remove</li>
+        <li><strong>Generate:</strong> Click "Remove Object"</li>
+      </ol>
+
+      <h4>3. Add Object into Image</h4>
+      <ol>
+        <li><strong>Navigate:</strong> Go to <code>/ai-image-editor/add-object-into-image</code></li>
+        <li><strong>Upload Image:</strong> Upload base image</li>
+        <li><strong>Enter Prompt:</strong> Describe object to add</li>
+        <li><strong>Generate:</strong> Click "Add Object"</li>
+      </ol>
+
+      <h4>4. Insert Objects</h4>
+      <ol>
+        <li><strong>Navigate:</strong> Go to <code>/ai-image-editor/insert-objects</code></li>
+        <li><strong>Upload Image:</strong> Upload base image</li>
+        <li><strong>Upload Reference:</strong> Upload reference image for object</li>
+        <li><strong>Enter Prompt:</strong> Describe where to insert</li>
+        <li><strong>Generate:</strong> Click "Insert Objects"</li>
+      </ol>
+
+      <h4>5. AI Photo Enhancer</h4>
+      <ol>
+        <li><strong>Navigate:</strong> Go to <code>/ai-image-editor/ai-photo-enhancer</code></li>
+        <li><strong>Upload Image:</strong> Upload photo to enhance</li>
+        <li><strong>Generate:</strong> Click "Enhance Photo"</li>
+        <li><strong>Result:</strong> Get upscaled, sharpened photo</li>
+      </ol>
+
+      <h4>6. AI Photo Expand</h4>
+      <ol>
+        <li><strong>Navigate:</strong> Go to <code>/ai-image-editor/ai-photo-expand</code></li>
+        <li><strong>Upload Image:</strong> Upload image to expand</li>
+        <li><strong>Generate:</strong> Click "Expand Image"</li>
+        <li><strong>Result:</strong> Get image with extended borders</li>
+      </ol>
+
+      <h4>7. Vectorize Image</h4>
+      <ol>
+        <li><strong>Navigate:</strong> Go to <code>/ai-image-editor/vectorize-image</code></li>
+        <li><strong>Upload Image:</strong> Upload raster image</li>
+        <li><strong>Generate:</strong> Click "Vectorize"</li>
+        <li><strong>Result:</strong> Get vector artwork</li>
+      </ol>
+
+      <h4>8. AI Combine Image</h4>
+      <ol>
+        <li><strong>Navigate:</strong> Go to <code>/ai-image-editor/ai-combine-image</code></li>
+        <li><strong>Upload Images:</strong> Upload multiple images</li>
+        <li><strong>Enter Prompt:</strong> Describe how to combine</li>
+        <li><strong>Generate:</strong> Click "Combine Images"</li>
+      </ol>
+
+      <h3>AI Art Generators (5 Tools)</h3>
+
+      <h4>1. AI Character Generator</h4>
+      <ol>
+        <li><strong>Navigate:</strong> Go to <code>/ai-art-generator/ai-character-generator</code></li>
+        <li><strong>Enter Prompt:</strong> Describe the character you want</li>
+        <li><strong>Generate:</strong> Click "Generate Character"</li>
+        <li><strong>Result:</strong> Get AI-generated character image</li>
+      </ol>
+
+      <h4>2. AI Anime Generator</h4>
+      <ol>
+        <li><strong>Navigate:</strong> Go to <code>/ai-art-generator/ai-anime-generator</code></li>
+        <li><strong>Enter Prompt:</strong> Describe anime character/scene</li>
+        <li><strong>Generate:</strong> Click "Generate Anime"</li>
+        <li><strong>Result:</strong> Get anime-style artwork</li>
+      </ol>
+
+      <h4>3. AI Comic Generator</h4>
+      <ol>
+        <li><strong>Navigate:</strong> Go to <code>/ai-art-generator/ai-comic-generator</code></li>
+        <li><strong>Enter Prompt:</strong> Describe comic scene</li>
+        <li><strong>Generate:</strong> Click "Generate Comic"</li>
+        <li><strong>Result:</strong> Get comic-book style panel</li>
+      </ol>
+
+      <h4>4. AI Coloring Book Generator</h4>
+      <ol>
+        <li><strong>Navigate:</strong> Go to <code>/ai-art-generator/ai-coloring-book-generator</code></li>
+        <li><strong>Enter Prompt:</strong> Describe coloring book page</li>
+        <li><strong>Generate:</strong> Click "Generate Line Art"</li>
+        <li><strong>Result:</strong> Get line art for coloring</li>
+      </ol>
+
+      <h4>5. AI Vector Image Generator</h4>
+      <ol>
+        <li><strong>Navigate:</strong> Go to <code>/ai-art-generator/ai-vector-image-generator</code></li>
+        <li><strong>Enter Prompt:</strong> Describe vector graphic</li>
+        <li><strong>Generate:</strong> Click "Generate Vector"</li>
+        <li><strong>Result:</strong> Get scalable vector image</li>
+      </ol>
+
+      <h3>AI Upscalers & Enhancement (6 Tools)</h3>
+      <p>Upscale and enhance images with specialized AI models for different use cases.</p>
+
+      <h4>1. Real-ESRGAN 4x+</h4>
+      <ol>
+        <li><strong>Navigate:</strong> Go to <code>/ai-upscaler/real-esrgan-4x</code></li>
+        <li><strong>Upload Image:</strong> Upload image to upscale</li>
+        <li><strong>Generate:</strong> Click "Upscale 4x"</li>
+        <li><strong>Result:</strong> Get 4x upscaled image with enhanced details</li>
+      </ol>
+
+      <h4>2. Clarity Upscaler</h4>
+      <ol>
+        <li><strong>Navigate:</strong> Go to <code>/ai-upscaler/clarity-upscaler</code></li>
+        <li><strong>Upload Image:</strong> Upload image</li>
+        <li><strong>Generate:</strong> Click "Enhance Clarity"</li>
+        <li><strong>Result:</strong> Get upscaled image with improved clarity</li>
+      </ol>
+
+      <h4>3. GFPGAN Face Restore</h4>
+      <ol>
+        <li><strong>Navigate:</strong> Go to <code>/ai-upscaler/gfpgan</code></li>
+        <li><strong>Upload Portrait:</strong> Upload photo with faces</li>
+        <li><strong>Generate:</strong> Click "Restore Faces"</li>
+        <li><strong>Result:</strong> Get enhanced photo with restored facial details</li>
+      </ol>
+
+      <h3>ControlNet & Guidance (11 Tools)</h3>
+      <p>Advanced image generation with precise control using edge detection, depth maps, poses, and more.</p>
+
+      <h4>1. ControlNet Canny (Edge Detection)</h4>
+      <ol>
+        <li><strong>Navigate:</strong> Go to <code>/ai-controlnet/canny</code></li>
+        <li><strong>Upload Image:</strong> Upload reference image for edge detection</li>
+        <li><strong>Enter Prompt:</strong> Describe desired output</li>
+        <li><strong>Generate:</strong> Click "Generate with Canny"</li>
+        <li><strong>Result:</strong> Get image following edge structure</li>
+      </ol>
+
+      <h4>2. ControlNet Depth</h4>
+      <ol>
+        <li><strong>Navigate:</strong> Go to <code>/ai-controlnet/depth</code></li>
+        <li><strong>Upload Image:</strong> Upload reference image</li>
+        <li><strong>Enter Prompt:</strong> Describe desired scene</li>
+        <li><strong>Generate:</strong> Click "Generate with Depth"</li>
+        <li><strong>Result:</strong> Get image maintaining 3D depth structure</li>
+      </ol>
+
+      <h4>3. ControlNet Pose</h4>
+      <ol>
+        <li><strong>Navigate:</strong> Go to <code>/ai-controlnet/pose</code></li>
+        <li><strong>Upload Image:</strong> Upload image with human pose</li>
+        <li><strong>Enter Prompt:</strong> Describe character/style</li>
+        <li><strong>Generate:</strong> Click "Generate with Pose"</li>
+        <li><strong>Result:</strong> Get image matching pose structure</li>
+      </ol>
+
+      <h4>4. QR Code Generator</h4>
+      <ol>
+        <li><strong>Navigate:</strong> Go to <code>/ai-controlnet/qr-code</code></li>
+        <li><strong>Enter URL:</strong> Input URL for QR code</li>
+        <li><strong>Enter Prompt:</strong> Describe artistic style</li>
+        <li><strong>Generate:</strong> Click "Generate QR Code"</li>
+        <li><strong>Result:</strong> Get functional artistic QR code</li>
+      </ol>
+
+      <h4>5. InstantID & PhotoMaker</h4>
+      <ol>
+        <li><strong>Navigate:</strong> Go to <code>/ai-controlnet/instant-id</code> or <code>/photomaker</code></li>
+        <li><strong>Upload Face:</strong> Upload reference face photo</li>
+        <li><strong>Enter Prompt:</strong> Describe desired scene/style</li>
+        <li><strong>Generate:</strong> Click "Generate"</li>
+        <li><strong>Result:</strong> Get image preserving identity</li>
+      </ol>
+
+      <h3>Background Tools (4 Tools)</h3>
+      <p>Professional background removal, generation, blur, and replacement.</p>
+
+      <h4>1. Background Remover Pro</h4>
+      <ol>
+        <li><strong>Navigate:</strong> Go to <code>/ai-background/remove-pro</code></li>
+        <li><strong>Upload Image:</strong> Upload image with background</li>
+        <li><strong>Generate:</strong> Click "Remove Background"</li>
+        <li><strong>Result:</strong> Get image with transparent background</li>
+      </ol>
+
+      <h4>2. Background Generator</h4>
+      <ol>
+        <li><strong>Navigate:</strong> Go to <code>/ai-background/generator</code></li>
+        <li><strong>Upload Subject:</strong> Upload subject image</li>
+        <li><strong>Enter Prompt:</strong> Describe desired background</li>
+        <li><strong>Generate:</strong> Click "Generate Background"</li>
+        <li><strong>Result:</strong> Get image with AI-generated background</li>
+      </ol>
+
+      <h4>3. Background Blur</h4>
+      <ol>
+        <li><strong>Navigate:</strong> Go to <code>/ai-background/blur</code></li>
+        <li><strong>Upload Image:</strong> Upload image</li>
+        <li><strong>Adjust Blur:</strong> Set blur intensity</li>
+        <li><strong>Generate:</strong> Click "Apply Blur"</li>
+        <li><strong>Result:</strong> Get image with professional blur effect</li>
+      </ol>
+
+      <h3>Portrait Tools (6 Tools)</h3>
+      <p>Transform and enhance portraits with AI-powered tools.</p>
+
+      <h4>1. AI Headshot Generator</h4>
+      <ol>
+        <li><strong>Navigate:</strong> Go to <code>/ai-portrait/headshot-generator</code></li>
+        <li><strong>Upload Photo:</strong> Upload casual photo</li>
+        <li><strong>Generate:</strong> Click "Generate Headshot"</li>
+        <li><strong>Result:</strong> Get professional headshot</li>
+      </ol>
+
+      <h4>2. Age Progression</h4>
+      <ol>
+        <li><strong>Navigate:</strong> Go to <code>/ai-portrait/age-progression</code></li>
+        <li><strong>Upload Photo:</strong> Upload portrait</li>
+        <li><strong>Select Age:</strong> Choose target age</li>
+        <li><strong>Generate:</strong> Click "Age Transform"</li>
+        <li><strong>Result:</strong> See how you'll look at different ages</li>
+      </ol>
+
+      <h4>3. Gender Swap</h4>
+      <ol>
+        <li><strong>Navigate:</strong> Go to <code>/ai-portrait/gender-swap</code></li>
+        <li><strong>Upload Photo:</strong> Upload portrait</li>
+        <li><strong>Generate:</strong> Click "Gender Swap"</li>
+        <li><strong>Result:</strong> Get gender-swapped portrait</li>
+      </ol>
+
+      <h4>4. AI Makeup</h4>
+      <ol>
+        <li><strong>Navigate:</strong> Go to <code>/ai-portrait/ai-makeup</code></li>
+        <li><strong>Upload Photo:</strong> Upload portrait</li>
+        <li><strong>Select Style:</strong> Choose makeup style</li>
+        <li><strong>Generate:</strong> Click "Apply Makeup"</li>
+        <li><strong>Result:</strong> Get photo with virtual makeup</li>
+      </ol>
+
+      <h3>AI Video Models (12 Models)</h3>
+      <p>Create stunning videos using the latest AI models from top providers like Kling, Luma, Runway, Minimax, and
+        more.</p>
+
+      <h4>1. Kling 2.0 Video</h4>
+      <ol>
+        <li><strong>Text-to-Video:</strong> Enter a prompt and select an aspect ratio (16:9, 9:16, etc.)</li>
+        <li><strong>Image-to-Video:</strong> Upload a reference image and describe the motion</li>
+        <li><strong>Features:</strong> Supports precise aspect ratio control and negative prompts</li>
+      </ol>
+
+      <h4>2. Luma Dream Machine</h4>
+      <ol>
+        <li><strong>Simple Usage:</strong> Just enter a text prompt describing your scene</li>
+        <li><strong>Automatic:</strong> Luma handles aspect ratio and optimization automatically</li>
+        <li><strong>Best For:</strong> High-quality, cinematic results with minimal effort</li>
+      </ol>
+
+      <h4>3. Runway Gen-3</h4>
+      <ol>
+        <li><strong>Fast Generation:</strong> Enter a text prompt for quick video creation</li>
+        <li><strong>Features:</strong> Automatic optimization for speed and quality</li>
+      </ol>
+
+      <h4>4. Minimax Hailuo</h4>
+      <ol>
+        <li><strong>Flexible Input:</strong> Works with both text prompts and uploaded images</li>
+        <li><strong>Control:</strong> Choose aspect ratios and use negative prompts to refine output</li>
+      </ol>
+
+      <div class="callout info">
+        <strong>ℹ️ Pro Tip:</strong> Check the "Model Info" box at the top of the settings panel to see exactly what
+        features (Aspect Ratio, Image Input, Negative Prompts) each video model supports!
+      </div>
+
+      <h2>📱 Dashboard Navigation</h2>
+
+      <h3>Mobile Navigation</h3>
+      <p>On mobile devices, MyDzine uses a bottom navigation bar:</p>
+      <ul>
+        <li><strong>Home:</strong> Dashboard overview</li>
+        <li><strong>Media:</strong> Media library (All, Images, Prompts)</li>
+        <li><strong>AI Tools:</strong> Browse all AI tools</li>
+        <li><strong>Pricing:</strong> Buy credits</li>
+        <li><strong>More:</strong> Credits display and logout</li>
+      </ul>
+
+      <h3>Desktop Navigation</h3>
+      <p>On desktop, navigation is in the sidebar:</p>
+      <ul>
+        <li><strong>Home:</strong> Dashboard overview with recent media and popular tools</li>
+        <li><strong>Media:</strong> Media library with tabs for All, Images, and Prompts</li>
+        <li><strong>AI Tools:</strong> Complete list of all 100+ AI tools across 11 categories</li>
+        <li><strong>Pricing:</strong> Credit packages and purchase options</li>
+      </ul>
+
+      <h2>💾 Media Library</h2>
+
+      <h3>Managing Your Media</h3>
+      <ol>
+        <li><strong>Access:</strong> Go to Dashboard → Media</li>
+        <li><strong>View:</strong> Browse all your generated images and saved prompts</li>
+        <li><strong>Filter:</strong> Use tabs to filter by "All", "Images", or "Prompts"</li>
+        <li><strong>Download:</strong> Click on any item to view and download</li>
+        <li><strong>Delete:</strong> Remove items you no longer need</li>
+      </ol>
+
+      <h2>💳 Purchasing Credits</h2>
+
+      <h3>Credit Packages</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Package</th>
+            <th>Credits</th>
+            <th>Prompt Credits</th>
+            <th>Price</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>250 Credit Pack</td>
+            <td>250</td>
+            <td>50</td>
+            <td>$29</td>
+          </tr>
+          <tr>
+            <td>750 Credit Pack</td>
+            <td>750</td>
+            <td>150</td>
+            <td>$69</td>
+          </tr>
+          <tr>
+            <td>2000 Credit Pack</td>
+            <td>2000</td>
+            <td>400</td>
+            <td>$149</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>How to Purchase</h3>
+      <ol>
+        <li><strong>Navigate:</strong> Go to Dashboard → Pricing</li>
+        <li><strong>Select Package:</strong> Choose a credit package</li>
+        <li><strong>Checkout:</strong> Click "Buy [X] Credits"</li>
+        <li><strong>Payment:</strong> Complete payment with Stripe</li>
+        <li><strong>Credits Added:</strong> Credits are automatically added to your account</li>
+      </ol>
+
+      <h2>🎯 Tips & Best Practices</h2>
+
+      <h3>Getting Better Results</h3>
+      <ul>
+        <li><strong>Detailed Prompts:</strong> Be specific in your prompts for better results</li>
+        <li><strong>Reference Images:</strong> Use high-quality reference images for better output</li>
+        <li><strong>Image Quality:</strong> Upload high-resolution images for best results</li>
+        <li><strong>Iteration:</strong> Try different prompts and variations</li>
+      </ul>
+
+      <h3>Saving Credits</h3>
+      <ul>
+        <li><strong>Preview First:</strong> Use previews before processing</li>
+        <li><strong>Save Results:</strong> Always save successful results to media library</li>
+        <li><strong>Batch Processing:</strong> Process multiple items efficiently</li>
+        <li><strong>Buy Larger Packs:</strong> Larger packs offer better value per credit</li>
+      </ul>
+
+      <h3>Safety & Content Policy</h3>
+      <p>Our AI models include built-in safety filters to prevent the generation of harmful, explicit, or NSFW content.
+      </p>
+      <div class="callout warning">
+        <strong>⚠️ Sensitive Content Errors:</strong> If you receive a "Safety Check Failed" error, it means your prompt
+        was flagged by the model's safety system. Please rewrite your prompt to be more descriptive and avoid explicit
+        or restricted terms (e.g., nudity, violence, hate speech).
+      </div>
+
+      <div class="callout success">
+        <strong>✅ Ready to create?</strong> Start using MyDzine's AI tools today! Each tool is designed to be intuitive
+        and powerful.
+      </div>
+
+      <div class="callout success">
+        <strong>✅ Next Steps:</strong>
+        <ul>
+          <li><a href="./pricing-credits.html">Understand Pricing & Credits</a></li>
+          <li><a href="./frontend-customization.html">Customize Frontend Appearance</a></li>
+        </ul>
+      </div>
+    </section>
+  </main>
+</body>
+
+</html>

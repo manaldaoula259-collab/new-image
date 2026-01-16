@@ -1,0 +1,396 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Pricing & Credits Configuration – MyDzine Docs</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="./styles.css" />
+  <script defer src="./script.js"></script>
+</head>
+
+<body>
+  <aside class="sidebar">
+    <div class="brand">
+      <img src="./screenshots/logo.svg" alt="MyDzine Logo" />
+      <div>
+        <h1>MyDzine</h1>
+        <p>Documentation v2.0</p>
+      </div>
+    </div>
+    <nav>
+      <a href="./index.html">Welcome</a>
+      <a href="./how-to-use.html">User Guide</a>
+      <a href="./push-to-github.html">How to push to GitHub</a>
+      <a href="./install-vercel.html">How to install on Vercel</a>
+      <a href="./install-aws-ec2.html">How to install on AWS EC2</a>
+      <a href="./clerk-setup.html">Clerk Authentication Setup</a>
+      <a href="./mongodb-setup.html">MongoDB Database Setup</a>
+      <a href="./replicate-setup.html">Replicate API Setup</a>
+      <a href="./env-setup.html">Environment Variables</a>
+      <a href="./stripe-setup.html">Stripe Payment Setup</a>
+      <a href="./frontend-customization.html">Frontend Customization</a>
+      <a class="active" href="./pricing-credits.html">Pricing & Credits</a>
+    </nav>
+    <footer>
+      <small>Built with Next.js 14 & MongoDB</small>
+    </footer>
+  </aside>
+
+  <main class="content">
+    <header class="topbar">
+      <h2>Pricing & Credits Configuration</h2>
+    </header>
+
+    <section class="prose">
+      <div class="callout info">
+        <strong>💎 Credit-Based System:</strong> MyDzine uses a credit-based pricing model with three credit packages.
+        Each AI tool operation costs credits, which are deducted from user accounts when they use the tools.
+      </div>
+
+      <h2>📋 Credit Packages Overview</h2>
+
+      <p>MyDzine offers three credit packages with different quantities of credits and prompt wizard credits. Each
+        package includes both regular credits (for AI tool operations) and prompt credits (for prompt wizard
+        assistance).</p>
+
+      <h3>Package Structure</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Package</th>
+            <th>Credits</th>
+            <th>Prompt Credits</th>
+            <th>Price</th>
+            <th>Price/Credit</th>
+            <th>Value</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>250 Credit Pack</strong></td>
+            <td>250</td>
+            <td>50</td>
+            <td>$29</td>
+            <td>$0.12</td>
+            <td>Entry Level</td>
+          </tr>
+          <tr>
+            <td><strong>750 Credit Pack</strong> ⭐</td>
+            <td>750</td>
+            <td>150</td>
+            <td>$69</td>
+            <td>$0.09</td>
+            <td>Best Value</td>
+          </tr>
+          <tr>
+            <td><strong>2000 Credit Pack</strong></td>
+            <td>2000</td>
+            <td>400</td>
+            <td>$149</td>
+            <td>$0.075</td>
+            <td>Professional</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="callout success">
+        <strong>💡 Best Value:</strong> The 750 Credit Pack offers the best value with the lowest cost per credit
+        ($0.09), making it perfect for regular users.
+      </div>
+
+      <h2>🎯 Credit Costs per Tool</h2>
+
+      <p>Each AI tool operation typically costs <strong>5 credits</strong>. This applies to most operations across all
+        tool categories. Here's a breakdown:</p>
+
+      <h3>Tool Categories and Credit Costs</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Tool Category</th>
+            <th>Credits per Operation</th>
+            <th>Example Tools</th>
+            <th>Configuration File</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>AI Art Generators</strong></td>
+            <td>5 credits</td>
+            <td>Anime Generator, Character Generator, Comic Generator</td>
+            <td><code>src/app/api/ai-art-generator/*/route.ts</code></td>
+          </tr>
+          <tr>
+            <td><strong>AI Photo Filters</strong></td>
+            <td>5 credits</td>
+            <td>Style Transfer, Anime Filter, 2D to 3D Converter</td>
+            <td><code>src/app/api/ai-photo-filter/*/route.ts</code></td>
+          </tr>
+          <tr>
+            <td><strong>AI Image Editors</strong></td>
+            <td>5 credits</td>
+            <td>Remove Object, Add Object, Photo Enhancer</td>
+            <td><code>src/app/api/ai-image-editor/*/route.ts</code></td>
+          </tr>
+          <tr>
+            <td><strong>Image-to-Prompt</strong></td>
+            <td>5 credits</td>
+            <td>Image to Prompt Generator</td>
+            <td><code>src/app/api/ai-photo-filter/image-to-prompt/route.ts</code></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h2>⚙️ Configuration Files</h2>
+
+      <h3>1. Frontend Pricing Display</h3>
+      <p>Credit packages are configured in <code>src/data/dashboard.ts</code> for display on the frontend:</p>
+
+      <div class="code">
+        <pre><code>export const dashboardPricingPlans: DashboardPricingPlan[] = [
+  {
+    name: "250 Credit Pack",
+    credits: 250,
+    promptCredits: 50,
+    price: "$29",
+    pricePerCredit: "$0.12 per credit",
+    description: "Kickstart new ideas with a flexible entry pack.",
+    ctaLabel: "Buy 250 Credits",
+    ctaHref: "/api/checkout/credits?plan=credits-250",
+  },
+  {
+    name: "750 Credit Pack",
+    credits: 750,
+    promptCredits: 150,
+    price: "$69",
+    pricePerCredit: "$0.09 per credit",
+    description: "Best value for creators shipping content every week.",
+    highlight: true, // This makes it the "Best Value" package
+    ctaLabel: "Buy 750 Credits",
+    ctaHref: "/api/checkout/credits?plan=credits-750",
+  },
+  {
+    name: "2000 Credit Pack",
+    credits: 2000,
+    promptCredits: 400,
+    price: "$149",
+    pricePerCredit: "$0.075 per credit",
+    description: "Scale production with the lowest cost per credit.",
+    ctaLabel: "Buy 2000 Credits",
+    ctaHref: "/api/checkout/credits?plan=credits-2000",
+  },
+];</code></pre>
+      </div>
+
+      <h3>2. Backend Credit Configuration</h3>
+      <p>Credit pricing and checkout is handled in <code>src/app/api/checkout/credits/route.ts</code>:</p>
+
+      <div class="code">
+        <pre><code>// Credit pricing plans (prices in cents for Stripe)
+const CREDIT_PLANS = {
+  250: { price: 2900, credits: 250, promptCredits: 50 }, // $29.00
+  750: { price: 6900, credits: 750, promptCredits: 150 }, // $69.00
+  2000: { price: 14900, credits: 2000, promptCredits: 400 }, // $149.00
+} as const;</code></pre>
+      </div>
+
+      <div class="callout warning">
+        <strong>⚠️ Important:</strong> Prices in the backend are in <strong>cents</strong> (e.g., 2900 = $29.00) for
+        Stripe integration. Always convert dollar amounts to cents when updating prices.
+      </div>
+
+      <h2>🔧 Customizing Credit Packages</h2>
+
+      <h3>Step 1: Modify Credit Amounts</h3>
+      <p>To change credit amounts, update both files:</p>
+      <ol class="steps">
+        <li class="step"><strong>Frontend:</strong> Update <code>src/data/dashboard.ts</code> with new credit and prompt
+          credit amounts</li>
+        <li class="step"><strong>Backend:</strong> Update <code>src/app/api/checkout/credits/route.ts</code> with
+          matching credit amounts and prices (in cents)</li>
+        <li class="step"><strong>Stripe:</strong> No changes needed in Stripe Dashboard since we use dynamic pricing
+        </li>
+      </ol>
+
+      <h3>Step 2: Modify Package Prices</h3>
+      <ol class="steps">
+        <li class="step">Update prices in <code>src/data/dashboard.ts</code> (display price as string, e.g., "$29")</li>
+        <li class="step">Update prices in <code>src/app/api/checkout/credits/route.ts</code> (in cents, e.g., 2900 for
+          $29.00)</li>
+        <li class="step">Recalculate <code>pricePerCredit</code> in frontend configuration</li>
+      </ol>
+
+      <h3>Step 3: Add a New Package</h3>
+      <ol class="steps">
+        <li class="step">Add new package to <code>dashboardPricingPlans</code> array in
+          <code>src/data/dashboard.ts</code></li>
+        <li class="step">Add corresponding entry to <code>CREDIT_PLANS</code> object in
+          <code>src/app/api/checkout/credits/route.ts</code></li>
+        <li class="step">Update the <code>ctaHref</code> to match the new plan key (e.g., <code>credits-500</code>)</li>
+        <li class="step">Test the checkout flow to ensure it works correctly</li>
+      </ol>
+
+      <h2>💳 Stripe Integration</h2>
+
+      <h3>Checkout Process Flow</h3>
+      <p>The checkout API route creates Stripe checkout sessions with dynamic pricing. Here's how it works:</p>
+
+      <ol class="steps">
+        <li class="step">User clicks "Buy Credits" button on pricing page</li>
+        <li class="step">Frontend redirects to <code>/api/checkout/credits?plan=credits-250</code></li>
+        <li class="step">Backend validates the plan and creates a Stripe checkout session</li>
+        <li class="step">User completes payment on Stripe checkout page</li>
+        <li class="step">Stripe webhook triggers and adds credits to user account</li>
+        <li class="step">User is redirected back to pricing page with success message</li>
+      </ol>
+
+      <h3>Stripe Checkout Session Configuration</h3>
+      <div class="code">
+        <pre><code>const session = await stripe.checkout.sessions.create({
+  allow_promotion_codes: true, // Allows coupon codes
+  metadata: {
+    userId, // User ID from Clerk
+    credits: plan.credits.toString(),
+    promptCredits: plan.promptCredits.toString(),
+    type: "user_credits", // Identifies this as a credit purchase
+  },
+  line_items: [
+    {
+      price_data: {
+        currency: "usd",
+        unit_amount: plan.price, // Price in cents
+        product_data: {
+          name: `${plan.credits.toLocaleString()} Credit Pack`,
+          description: `${plan.credits.toLocaleString()} credits + ${plan.promptCredits.toLocaleString()} prompt wizard credits`,
+        },
+      },
+      quantity: 1,
+    },
+  ],
+  mode: "payment", // One-time payment
+  success_url: `${process.env.NEXT_PUBLIC_APP_URL}/dashboard/pricing?session_id={CHECKOUT_SESSION_ID}&success=true`,
+  cancel_url: `${process.env.NEXT_PUBLIC_APP_URL}/dashboard/pricing?canceled=true`,
+});</code></pre>
+      </div>
+
+      <div class="callout info">
+        <strong>💡 Dynamic Pricing:</strong> MyDzine uses dynamic Stripe pricing (<code>price_data</code>) instead of
+        predefined Stripe Price IDs. This allows easy price changes without updating Stripe Dashboard.
+      </div>
+
+      <h3>Modify Credit Costs per Tool</h3>
+      <p>To change credit costs for specific tools, update the credit check in each API route:</p>
+
+      <div class="code">
+        <pre><code>// In API route (e.g., src/app/api/ai-art-generator/ai-anime-generator/route.ts)
+import { checkAndDeductCredits } from "@/core/utils/credits";
+
+// Check and deduct credits (change 5 to your desired credit cost)
+const creditCheck = await checkAndDeductCredits(5);
+if (!creditCheck.success) {
+  return NextResponse.json(
+    { error: creditCheck.error || "Insufficient credits" },
+    { status: 400 }
+  );
+}</code></pre>
+      </div>
+
+      <h2>📊 Credit Validation System</h2>
+
+      <h3>Credit Check Function</h3>
+      <p>Credits are checked and deducted using <code>src/core/utils/credits.ts</code>:</p>
+
+      <div class="code">
+        <pre><code>export async function checkAndDeductCredits(
+  amount: number,
+  userId?: string
+): Promise&lt;{ success: boolean; error?: string }&gt; {
+  // Implementation:
+  // 1. Checks user credit balance from database
+  // 2. Deducts credits if sufficient balance exists
+  // 3. Updates user credit balance in database
+  // 4. Returns success or error message
+}</code></pre>
+      </div>
+
+      <h3>Credit Balance Check</h3>
+      <ul>
+        <li><strong>Before Operation:</strong> System checks if user has enough credits</li>
+        <li><strong>During Operation:</strong> Credits are deducted immediately when operation starts</li>
+        <li><strong>After Operation:</strong> If operation fails, credits are not refunded (prevent abuse)</li>
+      </ul>
+
+      <h2>🔐 Webhook Integration</h2>
+
+      <h3>Stripe Webhook Handler</h3>
+      <p>Credits are automatically added to user accounts via Stripe webhook when payment is completed:</p>
+
+      <div class="code">
+        <pre><code>// src/app/api/webhooks/stripe/route.ts
+if (event.type === 'checkout.session.completed') {
+  const session = event.data.object;
+  const userId = session.metadata.userId;
+  const credits = parseInt(session.metadata.credits, 10);
+  const promptCredits = parseInt(session.metadata.promptCredits, 10);
+  
+  // Validate this is a credit purchase
+  if (session.metadata.type === 'user_credits') {
+    // Add credits to user account in database
+    await addCreditsToUser(userId, credits, promptCredits);
+  }
+}</code></pre>
+      </div>
+
+      <div class="callout warning">
+        <strong>⚠️ Webhook Security:</strong> Always verify webhook signatures using <code>STRIPE_WEBHOOK_SECRET</code>
+        to ensure requests are from Stripe.
+      </div>
+
+      <h2>📈 Pricing Strategy Recommendations</h2>
+
+      <h3>Current Pricing Tiers</h3>
+      <ul>
+        <li><strong>Entry Level ($29):</strong> Perfect for testing the platform or occasional use</li>
+        <li><strong>Best Value ($69):</strong> Ideal for regular users and content creators</li>
+        <li><strong>Professional ($149):</strong> Best for heavy users and businesses</li>
+      </ul>
+
+      <h3>Pricing Tips</h3>
+      <ul>
+        <li>✅ Lower cost per credit with larger packs incentivizes bulk purchases</li>
+        <li>✅ The 750 pack being highlighted as "Best Value" drives conversions</li>
+        <li>✅ Clear pricing per credit helps users understand value</li>
+        <li>✅ Separate prompt credits add flexibility for different use cases</li>
+      </ul>
+
+      <h2>🔍 Testing Credit System</h2>
+
+      <h3>Test Checklist</h3>
+      <ol class="steps">
+        <li class="step">Test credit purchase flow with Stripe test mode</li>
+        <li class="step">Verify credits are added correctly after payment</li>
+        <li class="step">Test credit deduction when using tools</li>
+        <li class="step">Verify insufficient credits error message</li>
+        <li class="step">Test webhook handling for successful payments</li>
+        <li class="step">Verify credit balance displays correctly in dashboard</li>
+      </ol>
+
+      <div class="callout success">
+        <strong>✅ Next Steps:</strong>
+        <ul>
+          <li><a href="./stripe-setup.html">Configure Stripe Payment Setup</a></li>
+          <li><a href="./env-setup.html">Complete Environment Variables Setup</a></li>
+          <li><a href="./how-to-use.html">Learn how users purchase credits</a></li>
+          <li><a href="./frontend-customization.html">Customize Pricing Display</a></li>
+        </ul>
+      </div>
+    </section>
+  </main>
+</body>
+
+</html>

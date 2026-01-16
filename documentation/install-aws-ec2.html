@@ -1,0 +1,553 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Install on AWS EC2 – MyDzine Docs</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="./styles.css" />
+  <script defer src="./script.js"></script>
+</head>
+
+<body>
+  <aside class="sidebar">
+    <div class="brand">
+      <img src="./screenshots/logo.svg" alt="Logo" />
+      <div>
+        <h1>MyDzine</h1>
+        <p>AWS EC2 Installation</p>
+      </div>
+    </div>
+    <nav>
+      <a href="./index.html">Welcome</a>
+      <a href="./how-to-use.html">User Guide</a>
+      <a href="./push-to-github.html">How to push to GitHub</a>
+      <a href="./install-vercel.html">How to install on Vercel</a>
+      <a class="active" href="./install-aws-ec2.html">How to install on AWS EC2</a>
+      <a href="./clerk-setup.html">How to setup Authentication</a>
+      <a href="./mongodb-setup.html">How to create MongoDB Database</a>
+      <a href="./env-setup.html">Environment Variables </a>
+      <a href="./stripe-setup.html">How to get Stripe keys</a>
+      <a href="./frontend-customization.html">How to update code files (frontend)</a>
+      <a href="./pricing-credits.html">Edit pricing & validations</a>
+    </nav>
+    <footer>
+      <small>How to install on AWS EC2 guide</small>
+    </footer>
+  </aside>
+
+  <main class="content">
+    <header class="topbar">
+      <h2>Install on AWS EC2 Ubuntu Server</h2>
+    </header>
+
+    <section class="prose">
+      <div class="callout">
+        <strong>Prerequisite:</strong> Make sure you've completed the <a href="./push-to-github.html">How to push to
+          GitHub</a> before proceeding with How to install on AWS EC2.
+      </div>
+
+      <h2>📹 Video Tutorial</h2>
+      <p>Watch this comprehensive video guide for step-by-step AWS EC2 setup instructions:</p>
+
+      <div
+        style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; background: #000; border-radius: 16px; border: 4px solid #000; margin: 2rem 0;">
+        <iframe width="100%" height="100%" src="https://www.youtube.com/embed/CK-6zarD2Hc"
+          style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;"
+          title="AWS EC2 Installation Tutorial" frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen>
+        </iframe>
+      </div>
+
+      <p style="margin-top: 1rem; text-align: center;">
+        <a href="https://www.youtube.com/watch?v=CK-6zarD2Hc" target="_blank" rel="noopener noreferrer"
+          style="color: var(--brand, #6366f1); text-decoration: underline;">
+          Watch on YouTube if the video doesn't load above
+        </a>
+      </p>
+
+      <div class="callout info">
+        <strong>🎥 Video Guide:</strong> This tutorial covers the complete AWS EC2 setup process including server
+        configuration, environment setup, and deployment steps. Follow along for the easiest installation experience!
+      </div>
+
+      <div class="callout warning">
+        <strong>⚠️ Important Note:</strong> This video demonstrates the standard AWS EC2 installation process for any
+        Node.js project. It does not show the specific installation steps for this MyDzine project. Please follow the
+        written instructions below for project-specific setup requirements and configurations.
+      </div>
+
+      <h3>Requirements</h3>
+      <ul>
+        <li>AWS Account (free tier eligible)</li>
+        <li>Domain name (optional, can use EC2 public IP)</li>
+        <li>Basic knowledge of Linux commands</li>
+        <li>Web browser (for AWS EC2 Instance Connect - recommended)</li>
+        <li>SSH client (Terminal, PuTTY, or VS Code - optional, for traditional SSH)</li>
+      </ul>
+
+      <div class="callout">
+        <strong>Estimated Cost:</strong> t2.micro instance (free tier) can run this application. For production,
+        consider t3.small or larger.
+      </div>
+
+      <h3>Step 1: Create AWS Account and EC2 Instance</h3>
+
+      <h4>1.1 Sign up for AWS</h4>
+      <ol class="steps">
+        <li class="step">Go to <a href="https://aws.amazon.com/" target="_blank" rel="noopener">aws.amazon.com</a> and
+          click "Create an AWS Account"</li>
+        <li class="step">Fill in your account details and verify your email/phone</li>
+        <li class="step">Add a payment method (required even for free tier)</li>
+        <li class="step">Choose "Basic Support" (free tier includes this)</li>
+      </ol>
+
+      <h4>1.2 Launch EC2 Instance</h4>
+      <ol class="steps">
+        <li class="step">Sign in to AWS Console and navigate to EC2 service</li>
+        <li class="step">Click "Launch Instance"</li>
+        <li class="step">Choose "Ubuntu Server 24.04 LTS" (free tier eligible)</li>
+        <li class="step">Select "t2.micro" instance type (free tier)</li>
+        <li class="step">Create or select a key pair for SSH access</li>
+        <li class="step">Configure security group with these rules:
+          <div class="code">
+            <pre><code>Type: SSH, Protocol: TCP, Port: 22, Source: My IP
+Type: HTTP, Protocol: TCP, Port: 80, Source: 0.0.0.0/0
+Type: HTTPS, Protocol: TCP, Port: 443, Source: 0.0.0.0/0
+Type: Custom TCP, Protocol: TCP, Port: 3000, Source: 0.0.0.0/0</code></pre>
+          </div>
+          <p><strong>Note:</strong> If using AWS EC2 Instance Connect, you don't need to open SSH port 22 to your IP.
+            EC2 Instance Connect handles authentication automatically.</p>
+        </li>
+        <li class="step">Launch the instance and wait for it to be "running"</li>
+      </ol>
+
+      <div class="callout">
+        <strong>Screenshots:</strong> The following images show the step-by-step process of launching an EC2 instance.
+        All screenshots are located in the <code>Documentation/screenshots/</code> directory.
+      </div>
+
+      <h5>Step 1: AWS EC2 Dashboard</h5>
+      <p>From the AWS EC2 Dashboard, click "Launch instance" to start creating your virtual server.</p>
+      <img src="./screenshots/01.jpg" alt="AWS EC2 Dashboard showing Launch instance button"
+        style="width: 100%; max-width: 800px; border: 1px solid var(--border); border-radius: 8px; margin: 16px 0;" />
+
+      <h5>Step 2: Choose AMI and Instance Type</h5>
+      <p>Select Ubuntu Server 24.04 LTS and t2.micro instance type (free tier eligible).</p>
+      <img src="./screenshots/02.jpg" alt="AMI selection showing Ubuntu 24.04 LTS and t2.micro instance type"
+        style="width: 100%; max-width: 800px; border: 1px solid var(--border); border-radius: 8px; margin: 16px 0;" />
+
+      <h5>Step 3: Create Key Pair</h5>
+      <p>Create a new key pair for secure access to your instance. Choose RSA encryption and .pem format for OpenSSH
+        compatibility.</p>
+      <img src="./screenshots/03.jpg" alt="Create key pair dialog showing RSA encryption and .pem format options"
+        style="width: 100%; max-width: 800px; border: 1px solid var(--border); border-radius: 8px; margin: 16px 0;" />
+
+      <h5>Step 4: Configure Security Group</h5>
+      <p>Set up security group rules to allow HTTP, HTTPS, and SSH traffic. The warning about 0.0.0.0/0 is normal for
+        this setup.</p>
+      <img src="./screenshots/04.jpg" alt="Security group configuration showing HTTP, HTTPS, and SSH rules"
+        style="width: 100%; max-width: 800px; border: 1px solid var(--border); border-radius: 8px; margin: 16px 0;" />
+
+      <h5>Step 5: Configure Storage</h5>
+      <p>Review storage configuration. The default 8 GiB is sufficient for this application and is free tier eligible.
+      </p>
+      <img src="./screenshots/05.jpg" alt="Storage configuration showing 8 GiB gp3 volume"
+        style="width: 100%; max-width: 800px; border: 1px solid var(--border); border-radius: 8px; margin: 16px 0;" />
+
+      <h5>Step 6: Launch Instance</h5>
+      <p>Review your configuration and click "Launch instance" to create your EC2 instance.</p>
+      <img src="./screenshots/06.jpg" alt="Final review screen before launching instance"
+        style="width: 100%; max-width: 800px; border: 1px solid var(--border); border-radius: 8px; margin: 16px 0;" />
+
+      <h3>Step 2: Connect to Your EC2 Instance</h3>
+
+      <h5>Step 7: View Your Running Instance</h5>
+      <p>After launching, you'll see your instance in the EC2 console. Note the instance ID and public IP address for
+        connection.</p>
+      <img src="./screenshots/07.png" alt="EC2 Instances list showing running ubuntuGFG instance"
+        style="width: 100%; max-width: 800px; border: 1px solid var(--border); border-radius: 8px; margin: 16px 0;" />
+
+      <h4>2.1 Using AWS EC2 Instance Connect (Recommended)</h4>
+      <ol class="steps">
+        <li class="step">In EC2 Console, select your running instance</li>
+        <li class="step">Click the "Connect" button at the top</li>
+        <li class="step">Select "EC2 Instance Connect" tab</li>
+        <li class="step">Click "Connect" - this will open a browser-based terminal</li>
+        <li class="step">You're now connected to your instance!</li>
+      </ol>
+
+      <div class="callout">
+        <strong>AWS EC2 Instance Connect:</strong> This method doesn't require downloading key files or configuring SSH
+        clients. It works directly in your browser and is more secure.
+      </div>
+
+      <h4>2.2 Alternative: AWS Systems Manager Session Manager</h4>
+      <ol class="steps">
+        <li class="step">In EC2 Console, select your instance</li>
+        <li class="step">Click the "Connect" button</li>
+        <li class="step">Select "Session Manager" tab</li>
+        <li class="step">Click "Connect" to open a browser-based terminal</li>
+      </ol>
+
+      <div class="callout">
+        <strong>Note:</strong> Session Manager requires the SSM agent to be installed and running on your instance. This
+        is pre-installed on Amazon Linux 2 and Ubuntu 18.04+ AMIs.
+      </div>
+
+      <h4>2.3 Traditional SSH (If needed)</h4>
+      <p>If you prefer traditional SSH or need it for specific use cases:</p>
+      <div class="code">
+        <pre><code># Make your key file secure
+chmod 400 /path/to/your-key.pem
+
+# Connect to your instance
+ssh -i /path/to/your-key.pem ubuntu@YOUR_PUBLIC_IP
+
+# Example:
+ssh -i ~/Downloads/my-key.pem ubuntu@3.15.123.45</code></pre>
+      </div>
+
+      <h5>SSH Connection Example</h5>
+      <p>Here's what a successful SSH connection looks like. You'll see the Ubuntu welcome message and system
+        information.</p>
+      <img src="./screenshots/ssh-connection.png"
+        alt="SSH terminal connection showing Ubuntu welcome message and system info"
+        style="width: 100%; max-width: 800px; border: 1px solid var(--border); border-radius: 8px; margin: 16px 0;" />
+
+      <h3>Step 3: Install Required Software</h3>
+
+      <h4>3.1 Update System</h4>
+      <div class="code">
+        <pre><code># Update package list and upgrade system
+sudo apt update && sudo apt upgrade -y
+
+# Install essential packages
+sudo apt install -y curl wget git unzip software-properties-common</code></pre>
+      </div>
+
+      <h4>3.2 Install Node.js 18+</h4>
+      <div class="code">
+        <pre><code># Install Node.js using NodeSource repository
+curl -fsSL https://deb.nodesource.com/setup_18.x | sudo -E bash -
+sudo apt-get install -y nodejs
+
+# Verify installation
+node --version  # Should show v18.x.x or higher
+npm --version</code></pre>
+      </div>
+
+      <h4>3.3 Install PM2 (Process Manager)</h4>
+      <div class="code">
+        <pre><code># Install PM2 globally
+sudo npm install -g pm2
+
+# Configure PM2 to start on boot
+pm2 startup
+# Follow the instructions shown by the command</code></pre>
+      </div>
+
+      <h4>3.4 Install Nginx (Reverse Proxy)</h4>
+      <div class="code">
+        <pre><code># Install Nginx
+sudo apt install -y nginx
+
+# Start and enable Nginx
+sudo systemctl start nginx
+sudo systemctl enable nginx
+
+# Check status
+sudo systemctl status nginx</code></pre>
+      </div>
+
+      <h3>Step 4: Deploy the Application</h3>
+
+      <h4>4.1 Clone Your Repository</h4>
+      <div class="code">
+        <pre><code># Create application directory
+sudo mkdir -p /var/www
+cd /var/www
+
+# Clone your repository (replace with your actual repo URL)
+sudo git clone https://github.com/yourusername/your-repo-name.git mydzine
+sudo chown -R ubuntu:ubuntu mydzine
+cd mydzine</code></pre>
+      </div>
+
+      <h4>4.2 Install Dependencies</h4>
+      <div class="code">
+        <pre><code># Install project dependencies
+npm install
+
+# Build the application
+npm run build</code></pre>
+      </div>
+
+      <h4>4.3 Configure Environment Variables</h4>
+      <div class="code">
+        <pre><code># Create environment file
+nano .env.local
+
+# Add all required environment variables (see env-setup.html)
+# MongoDB Connection (required)
+MONGO_URI=mongodb+srv://username:password@cluster.mongodb.net/mydzine
+
+# JWT Secret (required)
+JWT_SECRET=your-secret-key-change-this-in-production
+
+# OpenAI API (Primary AI Provider)
+OPENAI_API_KEY=sk-proj-your-openai-api-key-here
+
+# Google Gemini API (Fallback AI Provider)
+GOOGLE_API_KEY=your-google-api-key-here
+GOOGLE_MODEL=gemini-2.0-flash-exp
+GEMINI_CONTENT_TIMEOUT_MS=120000
+
+# AI Content Generation Timeouts
+OPENAI_CONTENT_TIMEOUT_MS=120000
+
+# Google OAuth (Optional)
+GOOGLE_CLIENT_ID=your-google-client-id.apps.googleusercontent.com
+GOOGLE_CLIENT_SECRET=your-google-client-secret
+
+# Stripe Configuration
+STRIPE_SECRET_KEY=sk_test_...
+STRIPE_PUBLISHABLE_KEY=pk_test_...
+STRIPE_WEBHOOK_SECRET=whsec_...
+STRIPE_PRICE_MONTHLY=price_...
+STRIPE_PRICE_YEARLY=price_...
+
+# App URL
+APP_BASE_URL=http://YOUR_PUBLIC_IP:3000
+
+# Frontend Public Variables
+NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY=pk_test_...
+NEXT_PUBLIC_GOOGLE_CLIENT_ID=your-google-client-id.apps.googleusercontent.com
+
+# Certificate Template (Optional)
+CERT_TEMPLATE_PATH=public/Template.pdf
+
+# YouTube API (Optional - For Video Search)
+YOUTUBE_API_KEY=your-youtube-api-key-here
+
+# EmailJS Configuration (For password reset - Optional)
+EMAILJS_SERVICE_ID=service_your-secret-key
+EMAILJS_TEMPLATE_ID=template_your-secret-key
+EMAILJS_PUBLIC_KEY=your-secret-key
+EMAILJS_PRIVATE_KEY=your-secret-key</code></pre>
+      </div>
+
+      <h3>Step 5: Configure Nginx</h3>
+
+      <h4>5.1 Create Nginx Configuration</h4>
+      <div class="code">
+        <pre><code># Create Nginx configuration
+sudo nano /etc/nginx/sites-available/default
+
+# Add the following configuration:
+server {
+    listen 80;
+    server_name YOUR_PUBLIC_IP;  # Replace with your domain if you have one
+
+    location / {
+        proxy_pass http://localhost:3000;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection 'upgrade';
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+        proxy_cache_bypass $http_upgrade;
+    }
+}</code></pre>
+      </div>
+
+      <h4>5.2 Enable the Site</h4>
+      <div class="code">
+        <pre><code># Enable the site
+sudo ln -s /etc/nginx/sites-available/default /etc/nginx/sites-enabled/
+
+# Remove default site
+sudo rm /etc/nginx/sites-enabled/default
+
+# Test Nginx configuration
+sudo nginx -t
+
+# Restart Nginx
+sudo systemctl restart nginx</code></pre>
+      </div>
+
+      <h3>Step 6: Start the Application</h3>
+
+      <h4>6.1 Start with PM2</h4>
+      <div class="code">
+        <pre><code># Start the application with PM2
+pm2 start npm --name "mydzine" -- start
+
+# Save PM2 configuration
+pm2 save
+
+# Check status
+pm2 status
+pm2 logs mydzine</code></pre>
+      </div>
+
+      <h3>Step 7: Configure SSL (Optional but Recommended)</h3>
+
+      <h4>7.1 Install Certbot</h4>
+      <div class="code">
+        <pre><code># Install Certbot
+sudo apt install -y certbot python3-certbot-nginx
+
+# Get SSL certificate (replace with your domain)
+sudo certbot --nginx -d yourdomain.com
+
+# Test auto-renewal
+sudo certbot renew --dry-run</code></pre>
+      </div>
+
+      <h3>Step 8: Configure Firewall</h3>
+
+      <div class="code">
+        <pre><code># Configure UFW firewall
+sudo ufw allow ssh
+sudo ufw allow 'Nginx Full'
+sudo ufw --force enable
+
+# Check status
+sudo ufw status</code></pre>
+      </div>
+
+      <h3>Step 9: Update Stripe Webhook URL</h3>
+
+      <ol class="steps">
+        <li class="step">Go to Stripe Dashboard → Webhooks</li>
+        <li class="step">Update your webhook endpoint URL to: <code>https://YOUR_DOMAIN/api/webhooks/stripe</code></li>
+        <li class="step">Test the webhook using the test endpoint</li>
+      </ol>
+
+      <h3>Step 10: Verify Installation</h3>
+
+      <div class="code">
+        <pre><code># Check if the application is running
+curl http://localhost:3000/api/health-check
+
+# Test Gemini AI integration
+curl http://localhost:3000/api/health-check
+
+# Check Nginx status
+sudo systemctl status nginx
+
+# Check PM2 status
+pm2 status
+
+# View application logs
+pm2 logs mydzine</code></pre>
+      </div>
+
+      <h3>Useful Commands</h3>
+
+      <h4>Application Management</h4>
+      <div class="code">
+        <pre><code># Restart application
+pm2 restart mydzine
+
+# Stop application
+pm2 stop mydzine
+
+# View logs
+pm2 logs mydzine
+
+# Monitor resources
+pm2 monit</code></pre>
+      </div>
+
+      <h4>Nginx Management</h4>
+      <div class="code">
+        <pre><code># Restart Nginx
+sudo systemctl restart nginx
+
+# Reload Nginx configuration
+sudo systemctl reload nginx
+
+# Check Nginx status
+sudo systemctl status nginx</code></pre>
+      </div>
+
+      <h4>System Updates</h4>
+      <div class="code">
+        <pre><code># Update system packages
+sudo apt update && sudo apt upgrade -y
+
+# Update application
+cd /var/www/mydzine
+git pull origin main
+npm install
+npm run build
+pm2 restart mydzine</code></pre>
+      </div>
+
+      <h3>Troubleshooting</h3>
+
+      <h4>Common Issues</h4>
+      <ul>
+        <li><strong>EC2 Instance Connect not working:</strong> Ensure your instance has the EC2 Instance Connect agent
+          installed (pre-installed on Ubuntu 18.04+)</li>
+        <li><strong>Port 3000 not accessible:</strong> Check security group rules and firewall settings</li>
+        <li><strong>Application not starting:</strong> Check PM2 logs with <code>pm2 logs mydzine</code></li>
+        <li><strong>Nginx 502 error:</strong> Ensure the application is running on port 3000</li>
+        <li><strong>Environment variables not working:</strong> Verify .env.local file exists and has correct values
+        </li>
+        <li><strong>Session Manager not available:</strong> Ensure SSM agent is running with
+          <code>sudo systemctl status snap.amazon-ssm-agent.amazon-ssm-agent</code>
+        </li>
+      </ul>
+
+      <h4>Log Locations</h4>
+      <div class="code">
+        <pre><code># Application logs
+pm2 logs mydzine
+
+# Nginx logs
+sudo tail -f /var/log/nginx/access.log
+sudo tail -f /var/log/nginx/error.log
+
+# System logs
+sudo journalctl -u nginx
+sudo journalctl -u pm2-ubuntu</code></pre>
+      </div>
+
+      <div class="callout">
+        <strong>Security Note:</strong> For production use, consider setting up a proper domain name, configuring a WAF,
+        and implementing additional security measures like fail2ban.
+      </div>
+
+      <h3>Cost Optimization</h3>
+      <ul>
+        <li>Use t2.micro for development (free tier)</li>
+        <li>Consider Reserved Instances for production</li>
+        <li>Set up CloudWatch alarms for monitoring</li>
+        <li>Use S3 for file storage if needed</li>
+        <li>Consider using Application Load Balancer for high traffic</li>
+      </ul>
+      <div class="callout success">
+        <strong>✅ Next Steps:</strong> After Installation:
+        <ul>
+          <li><a href="./stripe-setup.html">Configure Stripe Payment Setup</a></li>
+          <li><a href="./clerk-setup.html">Configure Clerk Authentication</a></li>
+          <li><a href="./env-setup.html">Complete Environment Variables Setup</a></li>
+          <li><a href="./how-to-use.html">Read the User Guide</a></li>
+        </ul>
+      </div>
+
+    </section>
+  </main>
+</body>
+
+</html>
