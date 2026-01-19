@@ -94,7 +94,7 @@ const HeroNew = () => {
             maxW={{ base: "100%", md: "800px", lg: "877px", xl: "877px", "2xl": "877px" }}
             px={{ base: 4, md: 0 }}
           >
-            MyDzine is a complete SaaS platform for AI image generation, editing, and creative automation.
+           poweraitool is a complete SaaS platform for AI image generation, editing, and creative automation.
           </Text>
 
           {/* CTA Button */}
