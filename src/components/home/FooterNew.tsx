@@ -245,7 +245,7 @@ const FooterNew = () => {
             color="white"
             opacity={0.9}
           >
-            MyDzine • Copyright © {currentYear}
+            poweraitool • Copyright © {currentYear}
           </Text>
 
           <HStack spacing={2} flexWrap="wrap" justify={{ base: "center", md: "center" }}>
@@ -257,13 +257,13 @@ const FooterNew = () => {
               color="white"
               opacity={0.9}
             >
-              Crafted by WebBuddy LLC
+              Crafted by poweraitool 
             </Text>
             <Text color="white" opacity={0.5}>
               •
             </Text>
             <Link
-              href="https://www.webbuddy.agency"
+              href="https://www.poweraitool.site"
               isExternal
               fontFamily="'General Sans', 'Inter', sans-serif"
               fontWeight="500"
@@ -275,7 +275,7 @@ const FooterNew = () => {
               _hover={{ opacity: 1 }}
               transition="opacity 0.2s"
             >
-              www.webbuddy.agency
+              www.poweraitool.site
             </Link>
           </HStack>
 
