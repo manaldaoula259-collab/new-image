@@ -100,7 +100,7 @@ const HowItWorksSection = () => {
             letterSpacing="-0.6px"
             color="black"
           >
-            How MyDzine Works in
+            How poweraitool Works in
             <Box as="span" display="block">3 Simple Steps</Box>
           </Heading>
         </VStack>
