@@ -2,7 +2,7 @@ import TermsPage from "@/components/pages/TermsPage";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "MyDzine Privacy Policy",
+  title: "poweraitool Privacy Policy",
 };
 
 const Terms = () => <TermsPage />;
