@@ -18,7 +18,7 @@ export async function generateMetadata({
   const prompt = prompts.find((prompt) => prompt.slug === slug)!;
 
   return {
-    title: `Free prompt ${prompt.label} - MyDzine`,
+    title: `Free prompt ${prompt.label} - poweraitool`,
     description:
       "Our free AI prompt covers a wide range of themes and topics to help you create a unique avatar. Use theme with our Studio or your Stable Diffusion or Dreambooth models.",
   };
