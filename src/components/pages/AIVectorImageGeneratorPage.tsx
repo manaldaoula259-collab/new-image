@@ -177,7 +177,7 @@ const AIVectorImageGeneratorPage = () => {
               px={4}
               fontWeight="400"
             >
-              Dzine&apos;s AI Vector Generator lets you instantly generate and customize crisp, scalable vectors—perfect for all your creative adventures!
+              poweraitool&apos;s AI Vector Generator lets you instantly generate and customize crisp, scalable vectors—perfect for all your creative adventures!
             </Text>
           </MotionVStack>
 
