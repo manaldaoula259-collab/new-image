@@ -69,7 +69,7 @@ const PrivacyPage = () => (
             fontFamily="'General Sans', 'Inter', sans-serif"
             color="rgba(0, 0, 0, 0.8)"
           >
-            At MyDzine, we are committed to protecting your privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website, use our AI-powered creative platform, or interact with us. MyDzine is a comprehensive AI creative suite offering 100+ tools for image generation, video creation, photo editing, and artistic transformations.
+            At poweraitool, we are committed to protecting your privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website, use our AI-powered creative platform, or interact with us. poweraitool is a comprehensive AI creative suite offering 100+ tools for image generation, video creation, photo editing, and artistic transformations.
           </Text>
           <Text
             fontSize={{ base: "sm", md: "md" }}
@@ -303,7 +303,7 @@ const PrivacyPage = () => (
             fontFamily="'General Sans', 'Inter', sans-serif"
             color="rgba(0, 0, 0, 0.8)"
           >
-            When you use MyDzine&apos;s AI tools to generate images, videos, or other content, you retain ownership of the generated content. However, you are responsible for ensuring that:
+            When you use poweraitool&apos;s AI tools to generate images, videos, or other content, you retain ownership of the generated content. However, you are responsible for ensuring that:
           </Text>
           <List listStyleType="initial" pl={4} fontFamily="'General Sans', 'Inter', sans-serif" color="rgba(0, 0, 0, 0.8)">
             <ListItem>You have the right to use any uploaded images or content as input for AI processing</ListItem>
@@ -442,8 +442,8 @@ const PrivacyPage = () => (
             color="rgba(0, 0, 0, 0.8)"
           >
             If you have any questions about this Privacy Policy or our privacy practices, please contact us at:{" "}
-            <Link href="mailto:hey@webbuddy.agency" textDecoration="underline" color="#573cff" _hover={{ color: "#4a2fd9" }}>
-              hey@webbuddy.agency
+            <Link href="mailto:admin@poweraitool.site" textDecoration="underline" color="#573cff" _hover={{ color: "#4a2fd9" }}>
+              admin@poweraitool.site
             </Link>
           </Text>
         </VStack>
