@@ -4,9 +4,9 @@ import { Metadata } from "next";
 export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
-  title: "AI Character Generator | MyDzine",
+  title: "AI Character Generator | poweraitool",
   description:
-    "Convert text to images in seconds with Dzine's free AI character generator. It also helps you create unique characters from pictures of people, animals, toys, or fantastical beings - no ads or watermarks.",
+    "Convert text to images in seconds with poweraitool's free AI character generator. It also helps you create unique characters from pictures of people, animals, toys, or fantastical beings - no ads or watermarks.",
 };
 
 const AICharacterGenerator = () => {
