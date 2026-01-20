@@ -544,7 +544,7 @@ const TermsPage = () => (
           >
             To request that your account and all associated data be deleted, please
             send an email to{" "}
-            <Link href="mailto:hey@webbuddy.agency" color="#573cff" _hover={{ color: "#4a2fd9" }}>hey@webbuddy.agency</Link>. Please
+            <Link href="mailto:admin@poweraitool.site" color="#573cff" _hover={{ color: "#4a2fd9" }}>admin@poweraitool.site</Link>. Please
             note that by deleting your account, you will no longer have access to
             any of the data or content associated with your account, including your media library and unused credits.
           </Text>
@@ -887,7 +887,7 @@ const TermsPage = () => (
           >
             For any questions or concerns regarding your privacy, you may contact us
             using the following details:{" "}
-            <Link href="mailto:hey@webbuddy.agency" color="#573cff" _hover={{ color: "#4a2fd9" }}>hey@webbuddy.agency</Link>
+            <Link href="mailto:admin@poweraitool.site" color="#573cff" _hover={{ color: "#4a2fd9" }}>admin@poweraitool.site</Link>
           </Text>
         </VStack>
       </Container>
