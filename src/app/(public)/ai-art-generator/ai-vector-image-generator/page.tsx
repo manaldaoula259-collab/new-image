@@ -4,9 +4,9 @@ import { Metadata } from "next";
 export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
-  title: "AI Vector Image Generator | MyDzine",
+  title: "AI Vector Image Generator | poweraitool",
   description:
-    "Dzine's AI Vector Generator lets you instantly generate and customize crisp, scalable vectors—perfect for all your creative adventures!",
+    "poweraitool's AI Vector Generator lets you instantly generate and customize crisp, scalable vectors—perfect for all your creative adventures!",
 };
 
 const AIVectorImageGenerator = () => {
