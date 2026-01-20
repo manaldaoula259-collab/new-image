@@ -6,7 +6,7 @@ export const dynamic = "force-dynamic";
 
 
 export const metadata: Metadata = {
-  title: "AI Design Sketch Generator - Transform Photos into Artistic Sketches | MyDzine",
+  title: "AI Design Sketch Generator - Transform Photos into Artistic Sketches | poweraitool",
   description:
     "Transform any photo into beautiful hand-drawn sketches with AI precision. Perfect for artistic designs and creative projects. Generate sketches instantly.",
 };
