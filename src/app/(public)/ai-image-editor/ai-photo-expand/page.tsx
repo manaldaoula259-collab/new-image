@@ -6,7 +6,7 @@ export const dynamic = "force-dynamic";
 
 
 export const metadata: Metadata = {
-  title: "AI Photo Expand - Enlarge and Extend Images | MyDzine",
+  title: "AI Photo Expand - Enlarge and Extend Images | poweraitool",
   description:
     "Use AI Image Expander to enlarge images, fill backgrounds, and transform any photo with beautiful extensions.",
 };
