@@ -6,7 +6,7 @@ export const dynamic = "force-dynamic";
 
 
 export const metadata: Metadata = {
-  title: "Insert Objects - Add Objects to Photos | MyDzine",
+  title: "Insert Objects - Add Objects to Photos | poweraitool",
   description:
     "Add objects to your photos using visual references. Create more dynamic and personalized images with AI-powered object insertion.",
 };
