@@ -6,7 +6,7 @@ export const dynamic = "force-dynamic";
 
 
 export const metadata: Metadata = {
-  title: "Vectorize Image - Convert to SVG | MyDzine",
+  title: "Vectorize Image - Convert to SVG | poweraitool",
   description:
     "Vectorize images into flawless, scalable SVGs. Convert any image to vector format ready to conquer any design challenge!",
 };
