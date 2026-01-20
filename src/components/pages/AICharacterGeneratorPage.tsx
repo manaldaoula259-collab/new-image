@@ -371,7 +371,7 @@ const AICharacterGeneratorPage = () => {
                   color="white"
                   opacity={0.9}
                 >
-                  Convert text to images in seconds with Dzine&apos;s free AI character generator. It also helps you create unique characters from pictures of people, animals, toys, or fantastical beings - no ads or watermarks.
+                  Convert text to images in seconds with poweraitool&apos;s free AI character generator. It also helps you create unique characters from pictures of people, animals, toys, or fantastical beings - no ads or watermarks.
                 </Text>
               </Box>
             </MotionVStack>
