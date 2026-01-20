@@ -14,7 +14,7 @@ const image = "https://photoshot.app/og-cover.jpg";
 export const metadata: Metadata = {
   metadataBase: new URL("https://photoshot.app"),
   title: {
-    template: "%s | MyDzine",
+    template: "%s | poweraitool",
     default: "Generate Custom AI avatar",
   },
   description,
@@ -28,9 +28,9 @@ export const metadata: Metadata = {
     "AI art",
     "image generation",
   ],
-  authors: [{ name: "MyDzine" }],
-  creator: "MyDzine",
-  publisher: "MyDzine",
+  authors: [{ name: "poweraitool" }],
+  creator: "poweraitool",
+  publisher: "poweraitool",
   formatDetection: {
     email: false,
     address: false,
@@ -40,14 +40,14 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     site: "@shinework",
     creator: "@shinework",
-    title: { template: "%s | MyDzine", default: "Generate Custom AI avatar" },
+    title: { template: "%s | poweraitool", default: "Generate Custom AI avatar" },
     description,
     images: [
       {
         url: image,
         width: 1200,
         height: 630,
-        alt: "MyDzine - AI Avatar Generator",
+        alt: "poweraitool - AI Avatar Generator",
       },
     ],
   },
@@ -55,15 +55,15 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     url: "https://photoshot.app",
-    siteName: "MyDzine",
-    title: { template: "%s | MyDzine", default: "Generate Custom AI avatar" },
+    siteName: "poweraitool",
+    title: { template: "%s | poweraitool", default: "Generate Custom AI avatar" },
     description,
     images: [
       {
         url: image,
         width: 1200,
         height: 630,
-        alt: "MyDzine - AI Avatar Generator",
+        alt: "poweraitool - AI Avatar Generator",
       },
     ],
   },
