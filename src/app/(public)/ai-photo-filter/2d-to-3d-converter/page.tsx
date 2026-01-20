@@ -5,7 +5,7 @@ export const dynamic = "force-dynamic";
 
 
 export const metadata: Metadata = {
-  title: "2D to 3D Converter - Transform Images into 3D Models | MyDzine",
+  title: "2D to 3D Converter - Transform Images into 3D Models | poweraitool",
   description:
     "Convert your 2D images into stunning 3D models with advanced depth mapping and AI-powered conversion technology. Export in GLB, OBJ, or STL formats.",
 };
