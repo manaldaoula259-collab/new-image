@@ -6,7 +6,7 @@ export const dynamic = "force-dynamic";
 
 
 export const metadata: Metadata = {
-  title: "Remove Background - AI Image Editor | MyDzine",
+  title: "Remove Background - AI Image Editor | poweraitool",
   description:
     "Erase backgrounds with a simple tap. Remove backgrounds from your images instantly with AI-powered editing.",
 };
