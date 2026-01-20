@@ -6,7 +6,7 @@ export const dynamic = "force-dynamic";
 
 
 export const metadata: Metadata = {
-  title: "AI Anime Filter Studio | MyDzine",
+  title: "AI Anime Filter Studio | poweraitool",
   description:
     "Turn selfies and photos into vibrant anime-style illustrations in seconds. Perfect for avatars, posters, and social content.",
 };
