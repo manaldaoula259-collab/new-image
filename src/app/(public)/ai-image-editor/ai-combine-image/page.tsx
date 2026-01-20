@@ -7,7 +7,7 @@ export const dynamic = "force-dynamic";
 
 
 export const metadata: Metadata = {
-  title: "AI Combine Image - Merge Images Seamlessly | MyDzine",
+  title: "AI Combine Image - Merge Images Seamlessly | poweraitool",
   description:
     "Merge images and layers with AI-powered editing. Achieve seamless structural match and consistent styling in just a few clicks.",
 };
