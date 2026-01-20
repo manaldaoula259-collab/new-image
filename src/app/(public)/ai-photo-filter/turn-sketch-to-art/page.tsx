@@ -6,7 +6,7 @@ export const dynamic = "force-dynamic";
 
 
 export const metadata: Metadata = {
-  title: "Sketch to Art Painter | MyDzine",
+  title: "Sketch to Art Painter | poweraitool",
   description:
     "Upload line art and let AI paint it with cinematic lighting, color, and texture. Perfect for concept art, comics, and storyboards.",
 };
