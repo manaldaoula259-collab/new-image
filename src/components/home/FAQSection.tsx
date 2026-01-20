@@ -19,20 +19,20 @@ const faqs = [
     answer: 'You can map out the design elements (such as shapes, images, or other visual components) on the canvas in the way you like and then press "Image-to-Image" to merge them into a new image layer.',
   },
   {
-    question: "How quickly can I generate assets using Dzine?",
+    question: "How quickly can I generate assets using poweraitool ?",
     answer: "Most generations complete within seconds. Complex operations like training custom models may take a few minutes, but standard image generation, editing, and enhancement are nearly instant.",
   },
   {
-    question: "Is Dzine suitable for beginners or do I need skills for using AI-assisted image generation tools?",
-    answer: "Dzine is designed for users of all skill levels. Our intuitive interface and AI-powered tools make it easy for beginners to create professional-quality images, while advanced users can leverage powerful customization options.",
+    question: "Is poweraitool  suitable for beginners or do I need skills for using AI-assisted image generation tools?",
+    answer: "poweraitool  is designed for users of all skill levels. Our intuitive interface and AI-powered tools make it easy for beginners to create professional-quality images, while advanced users can leverage powerful customization options.",
   },
   {
-    question: "Can I use Dzine for free?",
+    question: "Can I use poweraitool  for free?",
     answer: "Yes! You can start with free credits to explore our tools. When you're ready to scale, choose from our flexible credit packs that fit your needs.",
   },
   {
     question: "Can I use my generated content for commercial purposes?",
-    answer: "Absolutely. All content you generate with Dzine is yours to use commercially. You retain full rights to your creations.",
+    answer: "Absolutely. All content you generate with poweraitool  is yours to use commercially. You retain full rights to your creations.",
   },
   {
     question: "What are the rules for deducting credits?",
