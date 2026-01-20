@@ -60,7 +60,7 @@ const TermsPage = () => (
             letterSpacing="-0.6px"
             color="black"
           >
-            MyDzine Terms of Service
+            poweraitool Terms of Service
           </Text>
 
           <Text
@@ -69,7 +69,7 @@ const TermsPage = () => (
             fontFamily="'General Sans', 'Inter', sans-serif"
             color="rgba(0, 0, 0, 0.8)"
           >
-            Welcome to MyDzine, an AI-powered creative platform offering 100+ tools for image generation, video creation, photo editing, and artistic transformations. These Terms of Service (&quot;Terms&quot;) govern your access to and use of MyDzine&apos;s services, website, and platform. By accessing or using MyDzine, you agree to be bound by these Terms.
+            Welcome to poweraitool, an AI-powered creative platform offering 100+ tools for image generation, video creation, photo editing, and artistic transformations. These Terms of Service (&quot;Terms&quot;) govern your access to and use of poweraitool&apos;s services, website, and platform. By accessing or using poweraitool, you agree to be bound by these Terms.
           </Text>
           <Text
             fontSize={{ base: "sm", md: "md" }}
@@ -95,7 +95,7 @@ const TermsPage = () => (
             fontFamily="'General Sans', 'Inter', sans-serif"
             color="rgba(0, 0, 0, 0.8)"
           >
-            By creating an account, accessing, or using MyDzine, you acknowledge that you have read, understood, and agree to be bound by these Terms and our Privacy Policy. If you do not agree to these Terms, you may not access or use our services.
+            By creating an account, accessing, or using poweraitool, you acknowledge that you have read, understood, and agree to be bound by these Terms and our Privacy Policy. If you do not agree to these Terms, you may not access or use our services.
           </Text>
 
           <Text
@@ -113,7 +113,7 @@ const TermsPage = () => (
             fontFamily="'General Sans', 'Inter', sans-serif"
             color="rgba(0, 0, 0, 0.8)"
           >
-            MyDzine provides an AI-powered creative platform with 100+ tools including:
+            poweraitool provides an AI-powered creative platform with 100+ tools including:
           </Text>
           <List listStyleType="initial" pl={4} fontFamily="'General Sans', 'Inter', sans-serif" color="rgba(0, 0, 0, 0.8)">
             <ListItem>AI Image Generation (40+ models including FLUX, Ideogram, Stable Diffusion, and more)</ListItem>
@@ -140,7 +140,7 @@ const TermsPage = () => (
             fontFamily="'General Sans', 'Inter', sans-serif"
             color="rgba(0, 0, 0, 0.8)"
           >
-            To use MyDzine, you must create an account. You are responsible for:
+            To use poweraitool, you must create an account. You are responsible for:
           </Text>
           <List listStyleType="initial" pl={4} fontFamily="'General Sans', 'Inter', sans-serif" color="rgba(0, 0, 0, 0.8)">
             <ListItem>Providing accurate and complete information when creating your account</ListItem>
@@ -164,7 +164,7 @@ const TermsPage = () => (
             fontFamily="'General Sans', 'Inter', sans-serif"
             color="rgba(0, 0, 0, 0.8)"
           >
-            MyDzine operates on a credit-based system. Credits are required to use our AI tools and services. You may purchase credits through our pricing plans or receive credits as part of a subscription. Credits are non-refundable and non-transferable. Unused credits do not expire unless otherwise stated in your subscription terms.
+            poweraitool operates on a credit-based system. Credits are required to use our AI tools and services. You may purchase credits through our pricing plans or receive credits as part of a subscription. Credits are non-refundable and non-transferable. Unused credits do not expire unless otherwise stated in your subscription terms.
           </Text>
           <Text
             fontSize={{ base: "sm", md: "md" }}
@@ -191,7 +191,7 @@ const TermsPage = () => (
             fontFamily="'General Sans', 'Inter', sans-serif"
             color="rgba(0, 0, 0, 0.8)"
           >
-            When you upload images, videos, or other content to MyDzine, you represent and warrant that:
+            When you upload images, videos, or other content to poweraitool, you represent and warrant that:
           </Text>
           <List listStyleType="initial" pl={4} fontFamily="'General Sans', 'Inter', sans-serif" color="rgba(0, 0, 0, 0.8)">
             <ListItem>You own the rights to the content or have obtained all necessary permissions and licenses</ListItem>
@@ -225,7 +225,7 @@ const TermsPage = () => (
             fontFamily="'General Sans', 'Inter', sans-serif"
             color="rgba(0, 0, 0, 0.8)"
           >
-            You retain ownership of all AI-generated content created using MyDzine. However, you are responsible for ensuring that generated content:
+            You retain ownership of all AI-generated content created using poweraitool. However, you are responsible for ensuring that generated content:
           </Text>
           <List listStyleType="initial" pl={4} fontFamily="'General Sans', 'Inter', sans-serif" color="rgba(0, 0, 0, 0.8)">
             <ListItem>Does not infringe on the intellectual property rights of others</ListItem>
@@ -240,7 +240,7 @@ const TermsPage = () => (
             color="rgba(0, 0, 0, 0.8)"
             mt={2}
           >
-            MyDzine does not claim ownership of your generated content. You grant us a limited license to store, display, and process your content solely for the purpose of providing our services to you.
+            poweraitool does not claim ownership of your generated content. You grant us a limited license to store, display, and process your content solely for the purpose of providing our services to you.
           </Text>
 
           <Text
@@ -258,7 +258,7 @@ const TermsPage = () => (
             fontFamily="'General Sans', 'Inter', sans-serif"
             color="rgba(0, 0, 0, 0.8)"
           >
-            You agree not to use MyDzine to:
+            You agree not to use poweraitool to:
           </Text>
           <List listStyleType="initial" pl={4} fontFamily="'General Sans', 'Inter', sans-serif" color="rgba(0, 0, 0, 0.8)">
             <ListItem>Generate illegal, harmful, threatening, abusive, or defamatory content</ListItem>
@@ -747,7 +747,7 @@ const TermsPage = () => (
             fontFamily="'General Sans', 'Inter', sans-serif"
             color="rgba(0, 0, 0, 0.8)"
           >
-            We strive to provide reliable and continuous access to MyDzine, but we do not guarantee that the service will be available at all times. We may experience downtime due to maintenance, updates, technical issues, or circumstances beyond our control. We reserve the right to modify, suspend, or discontinue any part of our service at any time with or without notice.
+            We strive to provide reliable and continuous access to poweraitool, but we do not guarantee that the service will be available at all times. We may experience downtime due to maintenance, updates, technical issues, or circumstances beyond our control. We reserve the right to modify, suspend, or discontinue any part of our service at any time with or without notice.
           </Text>
           <Text
             fontSize={{ base: "sm", md: "md" }}
@@ -774,7 +774,7 @@ const TermsPage = () => (
             fontFamily="'General Sans', 'Inter', sans-serif"
             color="rgba(0, 0, 0, 0.8)"
           >
-            MyDzine is provided &quot;as is&quot; and &quot;as available&quot; without warranties of any kind, either express or implied. We do not guarantee that:
+            poweraitool is provided &quot;as is&quot; and &quot;as available&quot; without warranties of any kind, either express or implied. We do not guarantee that:
           </Text>
           <List listStyleType="initial" pl={4} fontFamily="'General Sans', 'Inter', sans-serif" color="rgba(0, 0, 0, 0.8)">
             <ListItem>The service will meet your specific requirements or expectations</ListItem>
@@ -789,7 +789,7 @@ const TermsPage = () => (
             color="rgba(0, 0, 0, 0.8)"
             mt={2}
           >
-            To the maximum extent permitted by law, MyDzine shall not be liable for any indirect, incidental, special, consequential, or punitive damages, or any loss of profits or revenues, whether incurred directly or indirectly, or any loss of data, use, goodwill, or other intangible losses resulting from your use of our service.
+            To the maximum extent permitted by law, poweraitool shall not be liable for any indirect, incidental, special, consequential, or punitive damages, or any loss of profits or revenues, whether incurred directly or indirectly, or any loss of data, use, goodwill, or other intangible losses resulting from your use of our service.
           </Text>
 
           <Text
@@ -807,7 +807,7 @@ const TermsPage = () => (
             fontFamily="'General Sans', 'Inter', sans-serif"
             color="rgba(0, 0, 0, 0.8)"
           >
-            We reserve the right to suspend or terminate your account and access to MyDzine at any time, with or without cause or notice, for any reason including, but not limited to, breach of these Terms, violation of our Acceptable Use Policy, or fraudulent, abusive, or illegal activity. Upon termination, your right to use the service will immediately cease, and we may delete your account and all associated data.
+            We reserve the right to suspend or terminate your account and access to poweraitool at any time, with or without cause or notice, for any reason including, but not limited to, breach of these Terms, violation of our Acceptable Use Policy, or fraudulent, abusive, or illegal activity. Upon termination, your right to use the service will immediately cease, and we may delete your account and all associated data.
           </Text>
           <Text
             fontSize={{ base: "sm", md: "md" }}
